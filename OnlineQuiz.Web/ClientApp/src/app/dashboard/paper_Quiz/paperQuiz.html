@@ -1,0 +1,184 @@
+<!--<style>
+  .modal-dialog {
+    /* max-width: 65vw!important; */
+  }
+</style>-->
+
+<div class="col-lg-12 grid-margin">
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title">
+        Paper List
+        <button (click)="openModal(template)" class="btn btn-success pull-right mr-2">Add Paper Series</button>
+        <button type="button" class="btn btn-primary pull-right  mr-2" (click)="back()">Back</button>
+
+      </h2>
+      <div class="row">
+        <div class="col-lg-12">
+          <!--<ngx-spinner bdColor="rgba(51,51,51,0.8)"
+                       size="medium"
+                       color="#fff"
+                       type="ball-scale-multiple">
+            <p style="font-size: 20px; color: white">Loading...</p>
+          </ngx-spinner>-->
+
+
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <td>S.N</td>
+                <td>Name</td>
+                <td>Years</td>
+                <td>Subjetc</td>
+                <td>Action</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let quiz of paperAlllist ;let i = index">
+                <td>{{i+1}}</td>
+                <td>{{quiz.paper}}</td>
+                <td>{{quiz.time}}</td>
+                <td>{{quiz.paperTypeStr}}</td>
+                <td>
+                  <!--<button type="button" class="btn btn-primary mr-2" (click)="addQuestion(quiz)">Add Question</button>-->
+                  <button type="button" *ngIf="quiz.isActive==0" class="btn btn-info mr-2" (click)="publish(quiz)">Active</button>
+                  <button type="button" *ngIf="quiz.isActive==1" disabled class="btn btn-info mr-2" >InActive</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <!--<ng-container *ngIf="isDevies=='2'">
+
+          <div class="row border border-info rounded-bottom border-top-1 clearfix bg-gray" style="background-color: whitesmoke;" *ngFor="let quiz of quizList ;let i = index">
+            <div class="col-lg-4 info-box">
+              <img src='{{image.imageName}}' alt="Card image" style="cursor:pointer;max-height:160px" (click)="viewProfile(image)">
+            </div>
+            <div class="col-lg-4">
+              <div class="col-lg-12">
+                <label><span style="font-weight:bold"> Name :</span>  &nbsp;{{quiz.name}}</label><br />
+                <label><span style="font-weight:bold"> Age :</span>   &nbsp;{{image.years}}</label><br />
+                <label><span style="font-weight:bold"> Height :</span>   &nbsp;{{image.height}}</label><br />
+                <label><span style="font-weight:bold"> Occupation :</span>   &nbsp;{{image.occupation}}</label><br />
+                <label><span style="font-weight:bold"> City :</span>   &nbsp;{{image.city}}</label>
+              </div>
+
+            </div>
+            <div class="col-lg-4">
+              <button type="button" style="margin-top: 9px;margin-bottom: 9px;" class="btn btn-sm btn-danger" (click)="connect(image,1)">Block</button><br />
+              <button type="button" style="margin-top: 9px;margin-bottom: 9px;" class="btn btn-sm btn-success" (click)="connect(image,1)">Conncet</button><br />
+              <button type="button" style="margin-top: 9px;margin-bottom: 9px;" class="btn btn-sm btn-primary" (click)="viewProfile(image)">Profile View</button><br />-->
+          <!--<button type="button" class="btn btn-sm btn-primary" (click)="connect(image,1)">Accept</button><br />
+          <button type="button" class="btn btn-sm btn-success" (click)="connect(image,1)">Decline</button><br />-->
+          <!--</div>
+
+
+
+
+
+            </div>
+            <br />
+          </ng-container>-->
+          <!--<ng-container *ngIf="isDevies=='1'">
+
+            <div class="info-box col-lg-12 col-sm-3 col-md-4" *ngFor="let quizListt ;let i = index">
+              <img src='{{image.imageName}}' alt="Card image" style="cursor:pointer" (click)="viewProfile(image)">
+              <h6 style="font-weight: 200">{{image.userName}}&nbsp;,{{image.years}}&nbsp;,{{image.height}}</h6>
+              <h6 style="font-weight: 200">{{image.occupation}}</h6>
+              <h6 style="font-weight: 200">{{image.city}}</h6>
+
+
+              <button type="button" style="width: 264px; margin-bottom: -100px" class="btn btn-primary" (click)="connect(image,1)">Conncet</button>
+
+            </div>
+          </ng-container>-->
+
+
+
+
+        </div>
+      </div>
+      <!--<div class="show-more">
+        <a href="#">Show more</a>
+      </div>-->
+    </div>
+  </div>
+
+</div>
+
+
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left"> Add Paper Series </h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+
+      <div class="form-row">
+        <div class="form-group col-6">
+          <label>Paper Name</label>
+          <input type="text" formControlName="Paper" placeholder="Paper Name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Paper.errors }" />
+          <div *ngIf="submitted && f.Paper.errors" class="invalid-feedback">
+            <div *ngIf="f.Paper.errors.required">Paper Name is required</div>
+
+          </div>
+        </div>
+        <div class="form-group col-6">
+          <label>Years</label>
+          <input type="text" placeholder="Years" formControlName="time" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.time.errors }" />
+          <div *ngIf="submitted && f.time.errors" class="invalid-feedback">
+            <div *ngIf="f.time.errors.required">Time is required</div>
+
+          </div>
+        </div>
+
+      </div>
+      <div class="form-row">
+        <div class="form-group col-6">
+          <label>Question URL</label>
+          <input type="text" formControlName="questionUrl" placeholder="Question uRL " class="form-control" [ngClass]="{ 'is-invalid': submitted && f.questionUrl.errors }" />
+          <div *ngIf="submitted && f.questionUrl.errors" class="invalid-feedback">
+            <div *ngIf="f.questionUrl.errors.required">Question URL is required</div>
+
+          </div>
+        </div>
+        <div class="form-group col-6">
+          <label>Answer URL</label>
+          <input type="text" formControlName="answerUrl" placeholder="Answer Url " class="form-control" />
+       
+        </div>
+
+
+      </div>
+      <div class="form-row">
+        <div class="form-group col-6">
+          <label>Description</label>
+          <input type="text" formControlName="description" placeholder="Description " class="form-control" />
+      
+        </div>
+        <div class="form-group col-6">
+          <label>Paper Type</label>
+
+          <select name="city" class="form-control" formControlName="paperType">
+            <option *ngFor="let paper of paperList" [value]="paper.key">{{paper.value}}</option>
+          </select>
+        </div>
+
+
+      </div>
+
+      <div class="text-center">
+        <button class="btn btn-primary mr-1">Add Paper</button>
+        <!--<button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>-->
+      </div>
+      <div class="mt-2 text-center">
+      </div>
+    </form>
+  </div>
+</ng-template>
