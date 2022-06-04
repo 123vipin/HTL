@@ -1,0 +1,137 @@
+/deep/.test accordion accordion-group > .card-header {
+  background: #f00 !important;
+}
+
+/deep/.panel-title .nav-link {
+  color: #ccc !important;
+  text-decoration: none;
+  font-size: 0.8rem;
+  padding-left: 25px;
+  font-weight: 500;
+}
+
+/deep/.sidebar .nav .nav-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  font-weight: 500;
+}
+ /deep/.sidebar .nav .nav-item:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    font-weight: 500;
+  }
+
+.panel-title .nav-link:hover
+{
+  color:#fff;
+}
+
+.panel-body ul li a
+{
+  padding-left:14px;
+}
+
+
+.panel-body ul
+{
+  background:#333;
+}
+em {
+  color: red;
+  font-style: initial;
+}
+/deep/.custom-toggle .panel-default {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+  /deep/.custom-toggle .panel-default .nav-item {
+    border-bottom: 1px solid transparent;
+  }
+  /deep/ .accordion-toggle .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 1.4rem;
+    white-space: nowrap;
+    color: #aeaeae !important;
+    font-size: 0.8rem;
+    font-family: "Roboto", sans-serif;
+  }
+  /deep/.accordion-toggle .nav-link:hover{
+    color:#fff!important;
+  }
+/deep/ .card-block {
+  text-align: left;
+  background-color: #353131;
+  padding: 4px;
+}
+
+/deep/a:focus {
+  background: transparent;
+  text-decoration: none !important;
+}
+
+/deep/a:hover {
+  background: transparent;
+  text-decoration: none !important;
+}
+
+/deep/[heading='Tradefeeds List'] .panel-title .nav-link::after {
+  content: '';
+  border: 10px solid transparent;
+  border-top: 12px solid white;
+  margin-left: 2px;
+  margin-bottom: 3px;
+  display: inline-block;
+  vertical-align: bottom;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+/deep/[heading='All Report'] .panel-title .nav-link::after {
+  content: '';
+  border: 10px solid transparent;
+  border-top: 12px solid white;
+  margin-left: 2px;
+  margin-bottom: 3px;
+  display: inline-block;
+  vertical-align: bottom;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+/deep/ .custom-toggle.custom-remove-class .card-header {
+  padding: 0px;
+}
+
+/deep/.custom-toggle.custom-remove-class .panel.card {
+  background-color: transparent;
+}
+
+/deep/.custom-toggle.custom-remove-class button.btn.btn-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1.4rem;
+  white-space: nowrap;
+  color: #aeaeae !important;
+  font-size: 0.8rem;
+  font-family: "Roboto", sans-serif;
+  text-decoration: none;
+  width: 100%;
+}
+
+  /deep/.custom-toggle.custom-remove-class button.btn.btn-link:hover {
+    color: #ffffff !important;
+  }
+
+  /deep/.custom-toggle.custom-remove-class button.btn.btn-link::after {
+    content: '';
+    border: 10px solid transparent;
+    border-top: 12px solid white;
+    margin-left: 2px;
+    margin-bottom: 3px;
+    display: inline-block;
+    vertical-align: bottom;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+  }
+
+
+/*170006*/

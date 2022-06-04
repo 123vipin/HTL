@@ -1,0 +1,55 @@
+<div class="container-scroller">
+  <div class="container-fluid page-body-wrapper">
+    <div class="row">
+      <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-full-bg">
+        <div class="row w-100">
+          <div class="col-lg-3 mx-auto bg-white">
+            <div class="auth-form-light text-left p-5">
+              <h2><a routerLink="/"><img src="assets/images/logo.png" class="img-fluid" /></a></h2>              
+              <form class="pt-5">
+                <!--<img [hidden]="!loginStatus==true" src="../../assets/images/loading_spinner1.gif" style="top: 230px;position: absolute; z-index:9999; height:100px; width:100px; right: 200px;" />-->
+                <form #loginForm="ngForm" (ngSubmit)="OnSubmit(UserName.value,Password.value)">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Username</label>
+                    <input type="email" #UserName ngModel name="UserName" placeholder="Username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <i class="mdi mdi-account"></i>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                      <show-hide-password size="md" icon="entypo" btnStyle="primary" [btnOutline]="false" title="Show Password">
+                        <input  autocomplete="off" max="15" class="form-control" type="password" placeholder="password"  #Password ngModel name="Password"  />
+                      </show-hide-password>                 
+                  </div>
+                  <em *ngIf="!valid" style="color:red"> Wrong Credentials</em>
+                  <div class="mt-5">
+                    <button [disabled]="!loginForm.valid || loginStatus==true" class="btn btn-block btn-success btn-lg font-weight-medium" type="submit">Login</button>
+                  </div>
+                  <div class="mt-2 text-center">
+                    <a routerLink="/register" class="auth-link text-black">Need to account? <span class="font-weight-medium">Register</span></a><br />
+                    <a routerLink="/forgotpassword" class="auth-link text-black">Forgot Password <span class="font-weight-medium"></span></a>
+                    <br />
+                    <a routerLink="/" class="auth-link text-black">Back <span class="font-weight-medium"></span></a>
+
+                  </div>
+                  <!--<div class="">
+                    <input type="text" [(ngModel)]="MobileNo" class="form-control" placeholder="Mobile No" />
+                    <button type="button" (click)="sendOTP(MobileNo)">Login</button>
+
+                  </div>-->
+                </form>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+    </div>
+
+    
+    <!-- row ends -->
+  </div>
+  <!-- page-body-wrapper ends -->
+</div>
+
+
