@@ -8,11 +8,12 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { SettingComponent } from '../Setting/setting-component';
 import { QuizComponent } from '../Quiz/quiz.component';
-import { QuizListComponent } from './QuizList/quiz-list-component';
-import { MainQuizListComponent } from './Main_Quiz/mainquiz-component';
-import { QuestionComponent } from '../question/question.component';
+
 import { PaperQuizListComponent } from './paper_Quiz/paperQuiz';
 import { FeedBackComponent } from '../Feedback/feedback-component';
+import { ProductCategoryComponent } from './ProductCategory/product-category-component';
+import { ProductListComponent } from './ProductList/product-list-component';
+import { ProductComponent } from '../NewProduct/new-product.component';
 
 const routes: Routes = [
   {
@@ -25,10 +26,10 @@ const routes: Routes = [
       { path: 'setting', component: SettingComponent, canActivate: [AuthGuard] },
       { path: 'feedback', component: FeedBackComponent, canActivate: [AuthGuard] },
       { path: 'quiz/:id', component: QuizComponent, canActivate: [AuthGuard] },
-      { path: 'quizList/:type', component: QuizListComponent, canActivate: [AuthGuard] },
-      { path: 'mainQuiz', component: MainQuizListComponent, canActivate: [AuthGuard] },
+      { path: 'product-category', component: ProductCategoryComponent, canActivate: [AuthGuard] },
+      { path: 'productList', component: ProductListComponent, canActivate: [AuthGuard] },
       { path: 'paperQuiz', component: PaperQuizListComponent, canActivate: [AuthGuard] },
-      { path: 'question/:id/:name', component: QuestionComponent, canActivate: [AuthGuard] },
+      { path: 'new-product/:id/:name', component: ProductComponent, canActivate: [AuthGuard] },
     ]
   }
 ]; 

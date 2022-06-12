@@ -1,4 +1,5 @@
-﻿using KaysthaMatrimoneySite.Data.Models;
+﻿using HTL.Data.Models;
+using KaysthaMatrimoneySite.Data.Models;
 using KaysthaMatrimoneySite.Data.ViewModels;
 using OnlineQuiz.Data.ViewModels;
 using System;
@@ -23,6 +24,8 @@ namespace KaysthaMatrimoneySite.Core.Services
         IEnumerable<DropDownList> GetAllPaperList(string userid);
         int SavePaperSeries(PaperViewModel model);
         IEnumerable<PaperViewModel> GetPaperAllList(int userid, int getValue, int skipValue, int statusType);
+        IEnumerable<ProductCategory> GetProductCategoryList(int userid, int getValue, int skipValue);
+        int saveProductCategory(ProductCategory model);
     }
     
 

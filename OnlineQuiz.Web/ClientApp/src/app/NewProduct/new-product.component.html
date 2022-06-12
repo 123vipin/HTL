@@ -12,7 +12,7 @@
 
           <div class="form-row">
             <div class="form-group col-6">
-              <label>Item Name</label>
+              <label>Product Name</label>
               <input type="text" id="w3review" formControlName="Name" name="w3review" class="form-control"  placeholder="Item Name">
             </div>
             <div class="form-group col-6">
@@ -36,17 +36,28 @@
             </div>
 </div>
 
-<div class="form-group">
+<div class="form-row">
   <div class="form-group col-6">
     <label>Quantity</label>
     <input type="text" id="quantity" formControlName="quantity" name="w3rPriceeview" class="form-control"  placeholder="Quantity">
   </div>
  
+  <div class="form-group col-6">
+    <label>Product Category</label>
+
+    <select name="category" class="form-control" formControlName="category">
+      <option *ngFor="let category of productCategoryList" [value]="category.key">{{category.value}}</option>
+    </select>
+  </div>
+
+ 
+  
+</div>
+<div class="form-group">
   <div class="col-lg-6">
     <label>Active</label>
     <ui-switch  formControlName="isActive"></ui-switch>
   </div>
-  
 </div>
         </form>
       </form>

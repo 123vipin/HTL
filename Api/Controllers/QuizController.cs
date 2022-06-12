@@ -13,6 +13,7 @@ using System.Net.Http.Headers;
 using Microsoft.Extensions.Configuration;
 using OnlineQuiz.Data.ViewModels;
 using System.Collections.Generic;
+using HTL.Data.Models;
 
 namespace KaysthaMatrimoneySite.API.Controllers
 {
@@ -70,6 +71,8 @@ namespace KaysthaMatrimoneySite.API.Controllers
 
             return _quiz.SaveProduct(model);
         }
+
+
         [HttpGet("Publish/{testId}")]
         public int Publish(int testId)
         {
@@ -111,6 +114,21 @@ namespace KaysthaMatrimoneySite.API.Controllers
 
             return _quiz.GetPaperAllList(Userid, GetValue, skipValue, statusType);
         }
+
+        [HttpGet("GetProductCategoryList/{UserId}/{GetValue}/{skipValue}")]
+        public IEnumerable<ProductCategory> GetProductCategoryList(int Userid, int GetValue, int skipValue)
+        {
+
+            return _quiz.GetProductCategoryList(Userid, GetValue, skipValue);
+        }
+
+        [HttpPost("saveProductCategory")]
+        public int saveProductCategory(ProductCategory model)
+        {
+
+            return _quiz.saveProductCategory(model);
+        }
+        
 
     }
 }

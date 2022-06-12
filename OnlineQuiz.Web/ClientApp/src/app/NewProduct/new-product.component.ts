@@ -9,10 +9,10 @@ import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-question',
-  templateUrl: './question.component.html',
-  styleUrls: ['./question.component.css']
+  templateUrl: './new-product.component.html',
+  styleUrls: ['./new-product.component.css']
 })
-export class QuestionComponent implements OnInit {
+export class ProductComponent implements OnInit {
 
   registerForm: FormGroup;
   submitted = false;
@@ -26,6 +26,7 @@ export class QuestionComponent implements OnInit {
   myForm: FormGroup;
   arr: FormArray;
   productData: any;
+  productCategoryList: Object;
   constructor(@Inject(FormBuilder)private formBuilder: FormBuilder,
     @Inject(Router)private router: Router,
     @Inject(LoginService) private loginService: LoginService,
@@ -49,10 +50,10 @@ export class QuestionComponent implements OnInit {
       quantity: [''],
      
     });
-    if(this.testSeriesName=='edit')
-    {
+  
       this.getProductDataById(this.testSeriesId);
-    }
+   
+  
   }
 
   // convenience getter for easy access to form fields
@@ -133,8 +134,9 @@ export class QuestionComponent implements OnInit {
   getProductDataById(id)
   {
     this.loginService.getproductDatabyId(id).subscribe((data): any => {
-      
+      debugger
       this.productData=data;
+      this.productCategoryList=data;
       if (data) {
      
         this.registerForm.controls['Price'].setValue(this.productData.price);

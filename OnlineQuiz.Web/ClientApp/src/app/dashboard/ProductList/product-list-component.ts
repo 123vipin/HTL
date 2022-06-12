@@ -9,27 +9,31 @@ import { QuizService } from '../../services/Customers/quiz-service';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { ProductCategoryService } from '../../services/Product/product.service';
 
 @Component
   ({
-    templateUrl: './mainquiz.html',
-    styleUrls: ['./mainquiz-list.css']
+    templateUrl: './product-list.html',
+    styleUrls: ['./product-list.css']
 
   })
-export class MainQuizListComponent {
+export class ProductListComponent {
   @ViewChild('table') table: ElementRef;
   public data: any;
   currentPage: any;
   dataLength: any;
   questionList: any;
   userId: any;
-  quizList: any;
+ 
   registerForm: FormGroup;
   submitted = false;
   isDevies: string;
   modalRef: BsModalRef;
   bsModalRef: BsModalRef;
-  constructor(@Inject(EncryptionService) private encrypt: EncryptionService, @Inject(BsModalService) private modalService: BsModalService, @Inject(FormBuilder) private formBuilder: FormBuilder,
+  productList: Object;
+  constructor(@Inject(EncryptionService) private encrypt: EncryptionService,
+  @Inject(ProductCategoryService) private productCategoryService: ProductCategoryService,
+   @Inject(BsModalService) private modalService: BsModalService, @Inject(FormBuilder) private formBuilder: FormBuilder,
     @Inject(ActivatedRoute) private route: ActivatedRoute, @Inject(CookieService) private cookieService: CookieService, @Inject(ToastrService) private toastr: ToastrService,
     @Inject(QuizService) private quizService: QuizService, @Inject(Router) private router: Router, @Inject(NgxSpinnerService) private spinner: NgxSpinnerService
   ) {
@@ -54,7 +58,7 @@ export class MainQuizListComponent {
   addQuestion(quiz,type) {
     var encrypted = this.encrypt.set('123456$#@$^@1ERF',quiz);
     var name = this.encrypt.set('123456$#@$^@1ERF',type);
-    this.router.navigate(['dashboard/question', encrypted,name]);
+    this.router.navigate(['dashboard/new-product', encrypted,name]);
   }
   back() {
     this.router.navigate(['/dashboard']);
@@ -62,41 +66,17 @@ export class MainQuizListComponent {
 
   getQuizList(type) {
     this.userId = this.cookieService.get('userId');
-
-    this.quizService.getProductList(this.userId, 10, 5, type).subscribe(data => {
-      debugger
+    this.productCategoryService.getProductList(this.userId, 10, 5, type).subscribe(data => {
       if (data) {
 
-        this.quizList = data;
+        this.productList = data;
         this.spinner.hide();
       }
     })
 
    
   }
-  publish(quiz) {
-    debugger
-    this.quizService.publish(quiz.id).subscribe(data => {
-      if (data) {
-        this.toastr.success('Test Series has been published successfully.', 'Success');
-        this.getQuizList(3);
-      }
-    })
-  }
 
-  getQuestionList() {
-    this.userId = this.cookieService.get('userId');
-    this.quizService.getQuestionList(this.userId).subscribe(data => {
-      if (data) {
-        this.questionList = data;
-      }
-    })
-  }
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
-    this.getQuestionList();
-   
-  }
  onSubmit() {
     this.submitted = true;
 

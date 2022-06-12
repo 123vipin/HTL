@@ -1,10 +1,8 @@
 import { Component, ElementRef, Inject, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { LoginService } from '../../services/login/login.service';
-import { DatePipe } from '@angular/common';
+
 import { NgxSpinnerService } from 'ngx-spinner';
-import { BsModalService } from 'ngx-bootstrap';
 import { ToastrService } from 'ngx-toastr';
-import { ProfileViewService } from '../../services/login/profileView-service';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { EncryptionService } from '../../Common/EncryptionService';
@@ -25,7 +23,7 @@ export class DashboardContentComponent implements OnInit {
   @ViewChild('widgetsContent') widgetsContent: ElementRef;
   constructor(@Inject(LoginService) private loginService: LoginService, @Inject(EncryptionService)private encrypt: EncryptionService,
     @Inject(Router) private router: Router, @Inject(CookieService) private cookieService: CookieService, @Inject(ToastrService)private toastr: ToastrService,
-    @Inject(ProfileViewService) private profileViewService: ProfileViewService, @Inject(NgxSpinnerService) private spinner: NgxSpinnerService
+     @Inject(NgxSpinnerService) private spinner: NgxSpinnerService
   ) { }
   ngOnInit() {
     this.spinner.show();

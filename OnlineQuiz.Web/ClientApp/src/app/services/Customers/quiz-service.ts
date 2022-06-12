@@ -22,6 +22,10 @@ export class QuizService {
     return this.http.get(this.rootUrl + '/api/Quiz/GetQuizById/' + userId + '/' + GetValue + '/' + skipValue + '/' + testId);
 
   }
+
+
+
+  
   
   saveTestSeries(model) {
     debugger

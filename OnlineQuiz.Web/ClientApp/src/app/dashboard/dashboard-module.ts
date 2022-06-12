@@ -34,24 +34,21 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { OnlyNumber } from '../Common/onlyNumberDirective';
 import { Ng5SliderModule } from 'ng5-slider';
 import { TwoDigitDecimaNumberDirective } from '../Common/two-digit-decimal-number-directive';
-
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
-import { ProfileViewService } from '../services/login/profileView-service';
-
 import { EncryptionService } from '../Common/EncryptionService';
 import { NgxGalleryModule } from 'ngx-gallery';
-
-
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ToastrModule } from 'ngx-toastr';
 import { SettingComponent } from '../Setting/setting-component';
 import { QuizComponent } from '../Quiz/quiz.component';
-import { QuizListComponent } from './QuizList/quiz-list-component';
-import { MainQuizListComponent } from './Main_Quiz/mainquiz-component';
-import { QuestionComponent } from '../question/question.component';
+
 import { CountdownModule } from 'ngx-countdown';
 import { PaperQuizListComponent } from './paper_Quiz/paperQuiz';
 import { FeedBackComponent } from '../Feedback/feedback-component';
+import { ProductCategoryComponent } from './ProductCategory/product-category-component';
+import { ProductCategoryService } from '../services/Product/product.service';
+import { ProductListComponent } from './ProductList/product-list-component';
+import { ProductComponent } from '../NewProduct/new-product.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -96,10 +93,10 @@ import { FeedBackComponent } from '../Feedback/feedback-component';
 
   ],
   declarations: [SettingComponent, QuizComponent, FeedBackComponent ,PaperQuizListComponent,
-    OnlyNumber, TwoDigitDecimaNumberDirective, MainQuizListComponent,
-    DashboardContentComponent, QuizListComponent, QuestionComponent,
+    OnlyNumber, TwoDigitDecimaNumberDirective, ProductListComponent,
+    DashboardContentComponent, ProductCategoryComponent, ProductComponent,
      SessionlogoutComponent, SearchPipe],
-  providers: [DatePipe, NotifierService, ProfileViewService, EncryptionService],
+  providers: [DatePipe, NotifierService, EncryptionService,ProductCategoryService],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
     NO_ERRORS_SCHEMA

@@ -13,6 +13,7 @@ using Web.Core.Users.Crytography;
 using System.Security.Cryptography;
 using OnlineQuiz.Data.ViewModels;
 using Newtonsoft.Json;
+using HTL.Data.Models;
 
 namespace KaysthaMatrimoneySite.Core.Services
 {
@@ -278,6 +279,7 @@ namespace KaysthaMatrimoneySite.Core.Services
                         throw ex;
                     }
                 }
+               
                 reader.Close();
                 con.Close();
             }
@@ -481,6 +483,87 @@ namespace KaysthaMatrimoneySite.Core.Services
 
             return dbTradeList;
         }
+
+        public IEnumerable<ProductCategory> GetProductCategoryList(int userId, int GetValue, int skipValue)
+        {
+            List<ProductCategory> dbTradeList = new List<ProductCategory>();
+            string connetionString = null;
+            SqlConnection con;
+            connetionString = _config.GetConnectionString("DbConnectionString");
+            con = new SqlConnection(connetionString);
+            using (SqlCommand Cmd = new SqlCommand("[dbo].[sp_getProductcategoryList]", con))
+            {
+                Cmd.CommandType = CommandType.StoredProcedure;
+                Cmd.Parameters.AddWithValue("@UserId", userId);
+                Cmd.Parameters.AddWithValue("@skipValue", skipValue);
+                Cmd.Parameters.AddWithValue("@GetValue", GetValue);
+               
+                con.Open();
+                SqlDataReader reader = Cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    try
+                    {
+                        dbTradeList.Add(new ProductCategory
+                        {
+                            Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                            Name = reader.IsDBNull(reader.GetOrdinal("Name")) ? null : reader.GetString(reader.GetOrdinal("Name")),
+                            CreatedBy = reader.IsDBNull(reader.GetOrdinal("UserName")) ? null : reader.GetString(reader.GetOrdinal("UserName")),
+                            createdTime = reader.GetDateTime(reader.GetOrdinal("CreatedDate")),
+                            //PaperTypeStr = reader.IsDBNull(reader.GetOrdinal("SubjectText")) ? null : reader.GetString(reader.GetOrdinal("SubjectText")),
+                            isActive = reader.GetBoolean(reader.GetOrdinal("isActive")),
+
+
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+                reader.Close();
+                con.Close();
+            }
+
+            return dbTradeList;
+        }
+
+        public int saveProductCategory(ProductCategory model)
+        {
+            int status = 0;
+            SqlConnection con;
+            string connetionString = null;
+            connetionString = _config.GetConnectionString("DbConnectionString");
+            con = new SqlConnection(connetionString);
+            try
+            {
+                using (SqlCommand Cmd = new SqlCommand("[dbo].[save_ProductCtaegory]", con))
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@Id", model.Id);
+                    Cmd.Parameters.AddWithValue("@Name", model.Name);
+                    Cmd.Parameters.AddWithValue("@Userid", model.Userid);
+                    Cmd.Parameters.AddWithValue("@description", model.description);
+                    Cmd.Parameters.AddWithValue("@isActive", model.isActive);
+                    con.Open();
+                    SqlDataReader reader = Cmd.ExecuteReader();
+                    status = 1;
+
+                    reader.Close();
+                    con.Close();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                status = 0;
+
+
+                //return (int)(CreateUser.Failed);
+            }
+            return status;
+        }
     }
 }
-;
+; 
