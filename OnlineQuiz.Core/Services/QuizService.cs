@@ -65,14 +65,24 @@ namespace KaysthaMatrimoneySite.Core.Services
             return QuestionNo;
         }
 
+<<<<<<< HEAD
         public IEnumerable<TestSeries> GetProductList(int userId, int GetValue, int skipValue,int statusType)
         {
             List<TestSeries> dbTradeList = new List<TestSeries>();
+=======
+        public IEnumerable<QuizList> GetLatestQuiz(int userId, int GetValue, int skipValue,int statusType)
+        {
+            List<QuizList> dbTradeList = new List<QuizList>();
+>>>>>>> 871d2c9e759214675ecdf89ae059301d26a4602a
             string connetionString = null;
             SqlConnection con;
             connetionString = _config.GetConnectionString("DbConnectionString");
             con = new SqlConnection(connetionString);
+<<<<<<< HEAD
             using (SqlCommand Cmd = new SqlCommand("[dbo].[sp_PrductList]", con))
+=======
+            using (SqlCommand Cmd = new SqlCommand("[dbo].[sp_getTestSeries]", con))
+>>>>>>> 871d2c9e759214675ecdf89ae059301d26a4602a
             {
                 Cmd.CommandType = CommandType.StoredProcedure;
                 Cmd.Parameters.AddWithValue("@UserId", userId);
@@ -85,6 +95,7 @@ namespace KaysthaMatrimoneySite.Core.Services
                 {
                     try
                     {
+<<<<<<< HEAD
                         dbTradeList.Add(new TestSeries
 
                         {
@@ -96,6 +107,17 @@ namespace KaysthaMatrimoneySite.Core.Services
                             isActive = reader.GetBoolean(reader.GetOrdinal("isActive")),
                             ImageUrl = reader.IsDBNull(reader.GetOrdinal("ImageUrl")) ? null : reader.GetString(reader.GetOrdinal("ImageUrl")),
 
+=======
+                        dbTradeList.Add(new QuizList
+                        {
+                            Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                            Name = reader.IsDBNull(reader.GetOrdinal("Name")) ? null : reader.GetString(reader.GetOrdinal("Name")),
+                            Subject = reader.IsDBNull(reader.GetOrdinal("Subject")) ? null : reader.GetString(reader.GetOrdinal("Subject")),
+                            NoOfQustion = reader.GetInt32(reader.GetOrdinal("NoOfQustion")),
+                            Time = reader.GetInt32(reader.GetOrdinal("Time")),
+                            isActive = reader.GetBoolean(reader.GetOrdinal("isActive")),
+                            Status = reader.GetInt32(reader.GetOrdinal("status")),
+>>>>>>> 871d2c9e759214675ecdf89ae059301d26a4602a
 
                         });
                     }
@@ -193,7 +215,10 @@ namespace KaysthaMatrimoneySite.Core.Services
                     Cmd.Parameters.AddWithValue("@description", model.description);
                     Cmd.Parameters.AddWithValue("@ImageUrl", model.ImageUrl);
                     Cmd.Parameters.AddWithValue("@Price", model.Price);
+<<<<<<< HEAD
                     Cmd.Parameters.AddWithValue("@Quantity", model.Quantity);
+=======
+>>>>>>> 871d2c9e759214675ecdf89ae059301d26a4602a
                     Cmd.Parameters.AddWithValue("@isActive", model.isActive);
                       con.Open();
                     SqlDataReader reader = Cmd.ExecuteReader();
@@ -245,6 +270,7 @@ namespace KaysthaMatrimoneySite.Core.Services
             return status;
         }
 
+<<<<<<< HEAD
         public TestSeries GetproductDatabyId(int id)
         {
             TestSeries dbTrade = new TestSeries();
@@ -286,6 +312,8 @@ namespace KaysthaMatrimoneySite.Core.Services
             return dbTrade;
 
         }
+=======
+>>>>>>> 871d2c9e759214675ecdf89ae059301d26a4602a
 
        public  IEnumerable<DropDownList> GetQuestionType(int userid)
         {
@@ -483,6 +511,7 @@ namespace KaysthaMatrimoneySite.Core.Services
 
             return dbTradeList;
         }
+<<<<<<< HEAD
 
         public IEnumerable<ProductCategory> GetProductCategoryList(int userId, int GetValue, int skipValue)
         {
@@ -567,3 +596,8 @@ namespace KaysthaMatrimoneySite.Core.Services
     }
 }
 ; 
+=======
+    }
+}
+;
+>>>>>>> 871d2c9e759214675ecdf89ae059301d26a4602a
