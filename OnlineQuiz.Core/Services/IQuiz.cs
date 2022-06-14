@@ -16,7 +16,7 @@ namespace KaysthaMatrimoneySite.Core.Services
         int AddQuestion(AddQuestion model);
         int SaveProduct(TestSeries model);
         int Publish(int testId);
-        TestSeries GetproductDatabyId(int id);
+        ProductCategoryEditModel GetproductDatabyId(int id);
         
         IEnumerable<PaperViewModel> GetPaperList(int userid, int getValue, int skipValue, int statusType);
         

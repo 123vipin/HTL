@@ -81,7 +81,7 @@ namespace KaysthaMatrimoneySite.API.Controllers
         }
 
         [HttpGet("GetproductDatabyId/{id}")]
-        public TestSeries GetproductDatabyId(int id)
+        public ProductCategoryEditModel GetproductDatabyId(int id)
         {
 
             return _quiz.GetproductDatabyId(id);

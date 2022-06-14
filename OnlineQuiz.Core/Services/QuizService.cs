@@ -245,9 +245,11 @@ namespace KaysthaMatrimoneySite.Core.Services
             return status;
         }
 
-        public TestSeries GetproductDatabyId(int id)
+        public ProductCategoryEditModel GetproductDatabyId(int id)
         {
             TestSeries dbTrade = new TestSeries();
+            List<DropDownList> dbTradeList = new List<DropDownList>();
+            ProductCategoryEditModel categoryList = new ProductCategoryEditModel();
             string connetionString = null;
             SqlConnection con;
             connetionString = _config.GetConnectionString("DbConnectionString");
@@ -279,11 +281,36 @@ namespace KaysthaMatrimoneySite.Core.Services
                         throw ex;
                     }
                 }
-               
+                reader.NextResult();
+                while (reader.Read())
+                {
+                    try
+                    {
+
+                        dbTradeList.Add(new DropDownList
+                        {
+                            Key = reader.GetInt32(reader.GetOrdinal("KEYId")),
+                            Value = reader.IsDBNull(reader.GetOrdinal("Text")) ? null : reader.GetString(reader.GetOrdinal("Text")),
+
+                        });
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+
+
                 reader.Close();
                 con.Close();
             }
-            return dbTrade;
+
+            categoryList.dbTrade = dbTrade;
+            categoryList.dbTradeList = dbTradeList;
+
+
+            return categoryList;
 
         }
 

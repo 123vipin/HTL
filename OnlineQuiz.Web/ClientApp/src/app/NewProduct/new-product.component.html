@@ -46,7 +46,8 @@
     <label>Product Category</label>
 
     <select name="category" class="form-control" formControlName="category">
-      <option *ngFor="let category of productCategoryList" [value]="category.key">{{category.value}}</option>
+      <option selected value="0" disabled>Select Category</option>
+      <option  *ngFor="let category of productCategoryList" [value]="category.key">{{category.value}}</option>
     </select>
   </div>
 

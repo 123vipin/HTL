@@ -26,7 +26,8 @@ export class ProductComponent implements OnInit {
   myForm: FormGroup;
   arr: FormArray;
   productData: any;
-  productCategoryList: Object;
+  productCategoryList: any;
+  mainProductData: any;
   constructor(@Inject(FormBuilder)private formBuilder: FormBuilder,
     @Inject(Router)private router: Router,
     @Inject(LoginService) private loginService: LoginService,
@@ -42,12 +43,13 @@ export class ProductComponent implements OnInit {
     this.testSeriesName = this.encrypt.get('123456$#@$^@1ERF', this.route.snapshot.params.name);
    
     this.registerForm = this.formBuilder.group({
-      Name: ['', [Validators.required,]],
-      Price: [''],
+      Name: ['', [Validators.required]],
+      Price: ['', [Validators.required]],
       Description: [''],
       isActive: [''],
       ImageUrl: [''],
       quantity: [''],
+      category:['0'],
      
     });
   
@@ -135,8 +137,9 @@ export class ProductComponent implements OnInit {
   {
     this.loginService.getproductDatabyId(id).subscribe((data): any => {
       debugger
-      this.productData=data;
-      this.productCategoryList=data;
+      this.mainProductData=data;
+      this.productData=this.mainProductData.dbTrade;
+      this.productCategoryList=this.mainProductData.dbTradeList;
       if (data) {
      
         this.registerForm.controls['Price'].setValue(this.productData.price);
@@ -145,6 +148,7 @@ export class ProductComponent implements OnInit {
         this.registerForm.controls['Name'].setValue(this.productData.name);
         this.registerForm.controls['isActive'].setValue(this.productData.isActive);
         this.registerForm.controls['quantity'].setValue(this.productData.quantity);
+        this.registerForm.controls['category'].setValue(this.productData.category);
       
       }
      
