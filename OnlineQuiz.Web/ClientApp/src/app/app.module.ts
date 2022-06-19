@@ -50,6 +50,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { UpdatePasswordComponent } from './UpdatePassword/updatePassword.component';
 import { QuizService } from './services/Customers/quiz-service';
+import { ProductOrderComponent } from './dashboard/ProductList_Main/product-main-component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { QuizService } from './services/Customers/quiz-service';
     FetchDataComponent,
     HeaderComponent,
     LoginComponent,
+    ProductOrderComponent,
     BannerComponent,
     OverviewComponent,
     VideoComponent,
@@ -105,6 +107,7 @@ import { QuizService } from './services/Customers/quiz-service';
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
       { path: 'login', component: LoginComponent },
+      { path: 'order', component: ProductOrderComponent },
       { path: 'dashBoardSideMenu', component: DashboardSidemenuComponent, canActivate: [AuthGuard] },
       { path: 'dashBoardheader', component: DashboardHeaderComponent, canActivate: [AuthGuard] },
       { path: 'register', component: RegisterComponent },
@@ -113,6 +116,7 @@ import { QuizService } from './services/Customers/quiz-service';
       { path: '**', component: HomeComponent, canActivate: [AuthGuard] },
 
 
+      
     ]),
     ChartsModule,
     TooltipModule.forRoot(),

@@ -1,64 +1,25 @@
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" [ngClass]="{'navbar-shrink':IsHeaderfixed}" id="topmainNav">
-  <a class="navbar-brand js-scroll-trigger" style="
-    height: 51px;
-    width: 125px;
-" routerLink="/">
-    <img style="
-    
-    margin-top: -32px
-" src="assets/images/MyGkpower-logos_black.png" class="img-fluid" />
-  </a>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" [ngClass]="{'navbar-shrink':IsHeaderfixed}"  id="topmainNav">
   <div class="container">
-
-    <button class="navbar-toggler navbar-toggler-right" type="button" (click)="toggleNavbar()">
+      <a class="navbar-brand js-scroll-trigger" routerLink="/"><img src="assets/images/logo.png" class="img-fluid" /></a>
+    <button class="navbar-toggler navbar-toggler-right" type="button"   (click)="toggleNavbar()">
       Menu
       <i class="fa fa-bars"></i>
     </button>
-    <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }">
+    <div class="collapse navbar-collapse"  [ngClass]="{ 'show': navbarOpen }">
       <ul class="navbar-nav text-uppercase ml-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="javascript:void(0)" (click)="getData('Reasoning')">Reasoning </a>
+          <a class="nav-link active" routerLink="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="javascript:void(0)" (click)="getData('Sports')">Sports</a>
+          <a class="nav-link" href="http://www.sportsperpetual.com/doc/SP_%20Customer%20PDF_Final%20Verson_04062018.pdf" target="_blank">Customer Information</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)" (click)="getData('Economics')">Economics</a>
+          <a class="nav-link btn btn-primary"style="border-radius: 21px;
+          font-size: 15px;" routerLink="/order">Order </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)" (click)="getData('History')">History</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)" (click)="getData('Political')">Political</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)" (click)="getData('Agriculture')">Agriculture </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)" (click)="getData('EVS')">EVS </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)" (click)="getData('Current')">Current Affairs </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)" (click)="getData('Math')">Math </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)" (click)="getData('Hindi')">Hindi </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)" (click)="getData('Geography')">Geography </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)" (click)="getData('Science')">Science</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)" (click)="getData('Computer')">Computer</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)" (click)="getData('Teaching')">Teaching Aptitude</a>
-        </li>
+          <a class="nav-link"  routerLink="/login">login</a>
+        </li>           
       </ul>
     </div>
   </div>

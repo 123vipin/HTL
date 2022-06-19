@@ -1,130 +1,46 @@
 <section class="bg-light overiew">
-  <div class="">
-    <div class="row">
-      <div class="col-lg-2" style="overflow-y: scroll; height:500px;">
-
-
-        <input type="text" class="form-control" [(ngModel)]="terms" placeholder="Serach here subject" />
-        <accordion [closeOthers]="oneAtATime">
-          <accordion-group *ngFor="let paper of paperList |filter:terms | paginate: { itemsPerPage: 5, currentPage: p };let i = index">
-            <button class="btn btn-link" (click)="getQuizList(paper.key)" accordion-heading type="button">
-              {{paper.value}}
-            </button>
-            <div class="row">
-              <div class="col-lg-12">
-
-                <ul *ngFor="let quiz1 of quizListAll ;let i = index">
-
-                  <li><a href="javascript:void(0)" (click)="getQuizById(quiz1.id)">{{quiz1.name}}</a></li>
-
-                </ul>
-
-
-
-              </div>
-            </div>
-
-          </accordion-group>
-       
-        </accordion>
-
+  <div class="container">
+       <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 class="section-heading text-uppercase">Overview</h2>
+        <h3 class="section-subheading text-muted">Sports Perpetual</h3>
       </div>
-      <div class="cl-lg-1"></div>
-      <div class="col-lg-9 grid-margin">
-        <div class="card">
-          <div class="card-body">
-            <div class="card-title row">
-              <div class="col-lg-12">
-                {{quiz?.name}} &nbsp;&nbsp; <span style="color: #1a6ecc"><b>Question {{pager.index + 1}} of {{pager.count}}.</b></span>
-              </div>
-              
-              
-              <!--<div class="col-lg-4">
-                <a href="javascript:void(0)"  (click)="Login()">Click here for attemp quiz.</a>
-
-
-
-              </div>-->
-             
-          
-            </div>
-
-
-
-            <div id="quiz">
-
-
-              <div *ngIf="mode=='quiz' && quiz">
-
-
-                <div *ngFor="let question of filteredQuestions;">
-                  <h2>{{pager.index + 1}}. <span [innerHTML]="question.name"></span></h2>
-                  <div class="row text-left options">
-                    <div class="col-md-6" *ngFor="let option of question.options">
-                      <div class="option">
-                        <label class="" [attr.for]="option.id">
-                          <input id="{{option.id}}" type="checkbox" [(ngModel)]="option.selected" (change)="onSelect(question, option);" />
-                          {{option.name}}
-                        </label>
-                      </div>
-
-                    </div>
-                    <hr />
-                    <button class="btn btn-info mr-1" (click)="showAnswerValue(question)">Answer</button>
-                    {{resultAnswer}}  
-                  </div>
-                </div>
-
-                <hr />
-                <div class="text-sm-center">
-                  <button class="btn btn-info mr-1" *ngIf="config.allowBack && pager.index>0" (click)="goTo(0);">First</button>
-                  <button class="btn btn-info mr-1" *ngIf="config.allowBack && pager.index>1" (click)="goTo(pager.index - 1);">Prev</button>
-                  <button class="btn btn-info mr-1" (click)="goTo(pager.index + 1);">Next</button>
-                  <button class="btn btn-info mr-1" *ngIf="config.allowBack && !pager.count - 1" (click)="goTo(pager.count - 1);">Last</button>
-                  <!--<pagination *ngIf="config.showPager" direction-links="false" total-items="totalItems" items-per-page="itemsPerPage" ng-model="currentPage" ng-change="pageChanged()"></pagination>-->
-                </div>
-
-
-              </div>
-
-              <div class="row review" *ngIf="mode=='review'">
-                <div class="col-sm-4" *ngFor="let question of quiz.questions; let index = index;">
-                  <div (click)="goTo(index)" class="{{ isAnswered(question) == 'Answered'? 'answered': 'not-answered' }}">{{index + 1}}. {{ isAnswered(question) }}</div>
-                </div>
-              </div>
-
-              <div class="result" style="overflow-y: scroll; height:400px;" *ngIf="mode=='result'">
-
-                <div *ngFor="let question of quiz.questions; let index = index">
-                  <div class="result-question">
-                    <h4>{{index + 1}}. {{question.name}}</h4>
-                    <div class="row">
-                      <div class="col-md-6" *ngFor="let Option of question.options">
-                        <input id="{{Option.id}}" type="checkbox" disabled="disabled" [(ngModel)]="Option.selected" /> {{Option.name}}
-                      </div>
-                    </div>
-
-
-                    <div class="alert {{ isCorrect(question) == 'correct'? 'alert-success': 'alert-danger'}}">
-                      Your answer is {{isCorrect(question)}}.
-                      <span class="alert alert-success" *ngIf="isCorrect(question) == 'wrong'">&nbsp; &nbsp; Correct Answer :  - {{showAnswer(question)}}</span>
-                    </div>
-                  </div>
-                </div>
-<!--  -->
-
-              </div>
-          
-            </div>
-            <!-- <a href="https://www.trustedcpmrevenue.com/supa1z635z?key=878ae84ec9bce63a6e15011286300107"> <img  style="height: 30px; width: 20px;" src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fthumbs.dreamstime.com%2Fb%2Fsexy-barman-girl-add-decorative-plant-to-cocktail-using-tweezers-sexy-attractive-barman-girl-add-decorative-plant-to-glass-183382905.jpg&imgrefurl=https%3A%2F%2Fwww.dreamstime.com%2Fsexy-barman-girl-add-decorative-plant-to-cocktail-using-tweezers-sexy-attractive-barman-girl-add-decorative-plant-to-glass-image183382905&tbnid=p5e8t56Qxj9CjM&vet=12ahUKEwjd5frklNf1AhVD2aQKHWLjCxYQMygHegUIARDJAQ..i&docid=W6t6Wq0-8QF8zM&w=800&h=533&itg=1&q=for%20add%20attractive%20image&ved=2ahUKEwjd5frklNf1AhVD2aQKHWLjCxYQMygHegUIARDJAQ" alt="Adsterra"> </a> -->
-            <!-- row ends -->
-          </div>
-          <!-- page-body-wrapper ends -->
-        </div>
-      </div>
-
     </div>
+      <div class="col-lg-12">
+          <p class="text-muted text-center">Sports Perpetual offers Customers an opportunity to make Risk Free Profits from Online sports betting via licencing its innovative bet placement and administration software.
 
+</p>
+          <p class="text-muted text-center">Bets are automatically placed by the software when there is a probability edge over the market. At the outset, Sports Perpetual provides qualifying Customers with a software license signup bonus, the bonus is used by the customer to fund an online e-wallet in the name of the Customer. The Customers e-wallet is used as a central hub to fund a portfolio of bookmaker accounts and one bet exchange account in the name of the Customer. The Customer retains a share of profits made by the software after paying Sports Perpetual its software licence fee, the fee is only paid if profits are made. </p>
+          <p class="text-muted text-center">The proposition is designed to provide Customers with an ongoing share of profits from sports betting at no initial cost and with no ongoing risk. Sports Perpetual software automatically places all bets and carries out all administration functions for the customer.</p>
+          <h3 class="section-subheading text-muted text-center features-heading">The three main features of the software are</h3>
+       </div>
+
+
+    <div class="row text-center">
+      <div class="col-md-4">
+        <span class="fa-stack fa-4x">
+          <i class="fa fa-circle fa-stack-2x text-primary"></i>
+          <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+        </span>
+        <h4 class="service-heading">Automated bet placement</h4>
+        
+      </div>
+      <div class="col-md-4">
+        <span class="fa-stack fa-4x">
+          <i class="fa fa-circle fa-stack-2x text-primary"></i>
+          <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+        </span>
+        <h4 class="service-heading">Automated Account Administration</h4>
+      
+      </div>
+      <div class="col-md-4">
+        <span class="fa-stack fa-4x">
+          <i class="fa fa-circle fa-stack-2x text-primary"></i>
+          <i class="fa fa-key fa-stack-1x fa-inverse"></i>
+        </span>
+        <h4 class="service-heading">Automated Software Licence Fee Payments</h4>
+      
+      </div>
+    </div>
   </div>
-  
 </section>

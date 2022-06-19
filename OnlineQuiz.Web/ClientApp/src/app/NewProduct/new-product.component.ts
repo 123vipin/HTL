@@ -89,7 +89,7 @@ export class ProductComponent implements OnInit {
      });
   }
   BackQuiz() {
-    this.router.navigate(['/dashboard/mainQuiz']);
+    this.router.navigate(['/dashboard/productList']);
   }
   addItem() {
     this.arr = this.myForm.get('arr') as FormArray;
