@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" [ngClass]="{'navbar-shrink':IsHeaderfixed}"  id="topmainNav">
+  <div class="container">
+      <a class="navbar-brand js-scroll-trigger" routerLink="/"><img src="assets/images/logo.png" class="img-fluid" /></a>
+    <button class="navbar-toggler navbar-toggler-right" type="button"   (click)="toggleNavbar()">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse"  [ngClass]="{ 'show': navbarOpen }">
+      <ul class="navbar-nav text-uppercase ml-auto">
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://www.sportsperpetual.com/doc/SP_%20Customer%20PDF_Final%20Verson_04062018.pdf" target="_blank">Customer Information</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-primary"style="border-radius: 21px;
+          font-size: 15px;" routerLink="/order">Order </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  routerLink="/login">login</a>
+        </li>           
+      </ul>
+    </div>
+  </div>
+</nav>

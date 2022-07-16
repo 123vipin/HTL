@@ -1,0 +1,22 @@
+
+.custom-slider-main {
+  display: flex;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+.info-box {
+  max-width: 270px;
+  max-height:350px;
+  background-color: #e8dbdb;
+  border-bottom:groove;
+  border-left:groove;
+  border-right:groove;
+  border-top:groove;
+
+}
+img {
+  width: 270px;
+  height: 120px;
+  object-fit:fill;
+}

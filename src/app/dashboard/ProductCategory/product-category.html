@@ -1,0 +1,115 @@
+<!--<style>
+  .modal-dialog {
+    /* max-width: 65vw!important; */
+  }
+</style>-->
+
+  <div class="col-lg-12 grid-margin">
+    <div class="card">
+      <div class="card-body">
+        <Div class="card-title row">
+          <div class="col-lg-3">Product Category List</div>
+          <div class="col-lg-6"> <input type="text" class="form-control" [(ngModel)]="term" placeholder="Serach any fields" /></div>
+          <div class="col-lg-3">  <button type="button" class="btn btn-primary pull-right" (click)="openModal(template)">Add Category</button></div>
+          
+      </Div>
+        <div class="row">
+          <div class="col-lg-12">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <td>S.N</td>
+                  <td>Name</td>
+                  <td>Active</td>
+                  <td>Created By</td>
+                  <td>Action</td>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- |filterBy:term | paginate: { itemsPerPage: 5, currentPage: p } -->
+                <tr *ngFor="let category of categoryData;let i = index">
+                  <td>{{i+1}}</td>
+                  <td>{{category.name}}</td>
+                  <td >
+
+                    <i *ngIf="category.isActive" class="fa fa-check" aria-hidden="true"></i>
+                    <i *ngIf="!category.isActive" class="fa fa-times" aria-hidden="true"></i>
+                  </td>
+                  <td>{{category.createdBy}}</td>
+                  <td>
+                    <!-- <button type="button" *ngIf="quiz.status==1" (click)="AttempSeries(quiz.id)" class="btn btn-primary">Reattampt Series</button>--> 
+                    <button type="button"  (click)="editCategory(template,category)" class="btn btn-primary">Edit</button> 
+                  </td>
+                </tr>
+               
+                `	<pagination-controls *ngIf="categoryData.length>5" (pageChange)="pageChange($event)" class="my-pagination"></pagination-controls>
+              </tbody>
+            </table>
+
+
+
+
+
+
+          </div>
+        </div>
+        <!--<div class="show-more">
+          <a href="#">Show more</a>
+        </div>-->
+      </div>
+  </div>
+
+</div>
+
+
+
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left"> Add Product Category </h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+  
+      <div class="form-row">
+        <div class="form-group col-6">
+          <label>Product Category Name</label>
+          <input type="text" formControlName="Name" placeholder="Product Category Name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['Name'].errors }" />
+          <div *ngIf="submitted && f['Name'].errors" class="invalid-feedback">
+            <div *ngIf="f['Name'].errors['required']">Name is required</div>
+         
+          </div>
+        </div>
+
+        <div class="form-group col-6">
+          <label>Description</label>
+          <input type="text" formControlName="description" placeholder="Description " class="form-control" [ngClass]="{ 'is-invalid': submitted && f['description'].errors }" />
+          <!-- <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+            <div *ngIf="f.description.errors.required">Email is required</div> -->
+
+          </div>
+       
+
+      </div>
+      <div class="form-row">
+        <div class="form-group col-6">
+       
+          <label>Active</label>
+          <ui-switch  formControlName="isActive"></ui-switch>
+            
+          </div>
+        </div>
+       
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary mr-1">Save</button>
+        <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+      </div>
+      <div class="mt-2 text-center">
+      </div>
+    </form>
+  </div>
+</ng-template>

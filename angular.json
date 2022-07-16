@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "bd492243-c114-4c28-b46a-a39f6d8634f2"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -94,13 +97,23 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "assets/css/dashboard.css",
+              "assets/css/dashboard.css",
+              "../node_modules/font-awesome/css/font-awesome.css",
+              "styles.css",
+              "src/assets/css/simple-line-icons.css",
+              
+              "src/assets/css/dashboard.css",
+              "src/assets/css/theme-color.css",
+              "../node_modules/ngx-toastr/toastr.css",
+              "./node_modules/ngx-ui-switch/ui-switch.component.css"
+              
+           
             ],
             "scripts": []
           }
         }
       }
     }
-  },
-  "defaultProject": "HotelMgtA"
+  }
 }

@@ -1,0 +1,52 @@
+<style>
+  .card {
+  }
+</style>
+
+
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+  <ul class="nav">
+    <li class="nav-item" [routerLinkActive]="['active']">
+      <a class="nav-link" routerLink="/dashboard">
+        <span class="menu-title">Dashboard</span>
+        <i class="fa fa-dashboard" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="nav-item" [routerLinkActive]="['active']">
+    <a class="nav-link" routerLink="productList">
+      <span class="menu-title">Product List</span>
+      <i class="fa fa-file" aria-hidden="true"></i>
+    </a>
+  </li> 
+  <!-- <li class="nav-item" [routerLinkActive]="['active']">
+    <a class="nav-link" routerLink="uploadImage">
+      <span class="menu-title">Manage  Photo</span>
+      <i class="icon-list menu-icon"></i>
+    </a>
+  </li>--> 
+    <li class="nav-item" [routerLinkActive]="['active']">
+      <a class="nav-link" routerLink="product-category">
+        <span class="menu-title">Product Category</span>
+        <i class="icon-eye menu-icon"></i>
+      </a>
+    </li>
+    <!--<li class="nav-item" [routerLinkActive]="['active']">
+    <a class="nav-link" (Click)="allProfileViewList(2)">
+      <span class="menu-title">Attempt Quiz List</span>
+      <i class="icon-eye menu-icon"></i>
+    </a>
+  </li>-->
+    <li class="nav-item" [routerLinkActive]="['active']">
+      <a class="nav-link" routerLink="setting">
+        <span class="menu-title">Setting</span>
+        <i class="fa fa-gear"></i>
+      </a>
+    </li>
+    <li class="nav-item" [routerLinkActive]="['active']">
+      <a class="nav-link" routerLink="feedback">
+        <span class="menu-title">Feedback</span>
+        <i class="fa fa-comments-o" aria-hidden="true"></i>
+      </a>
+    </li>
+  </ul>
+</nav>

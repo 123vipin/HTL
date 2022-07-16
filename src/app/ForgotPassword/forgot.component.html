@@ -1,0 +1,48 @@
+<div class="container-scroller">
+  <div class="container-fluid page-body-wrapper">
+    <div class="row">
+      <div class="content-wrapper full-page-wrapper d-flex align-items-center auth register-full-bg">
+        <div class="row w-100">            
+              <div class="col-lg-6 mx-auto  bg-white">
+                <div class="auth-form-light text-left p-5">
+                  <h2>Reset Password</h2>
+                  <hr />
+                  <!--<h2><a routerLink="/"><img src="aperassets/images/logo.png"  class="img-fluid" /></a></h2>-->                 
+                  <form class="pt-4">
+                    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    
+                      <div class="form-row">
+                        <div class="form-group col-6">
+                          <label>Email</label>
+                          <input type="text" formControlName="email"placeholder="Email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
+                          <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                            <div *ngIf="f['email'].errors['required']">Email is required</div>
+                            <div *ngIf="f['email'].errors['email']">Email must be a valid email address</div>
+                          </div>
+                        </div>
+                      
+                      </div>
+
+                    
+
+                      <div class="text-center">
+                        <button class="btn btn-primary mr-1">Reset Password</button>
+
+                      </div>
+                      <div class="mt-2 text-center">
+                        <a routerLink="/login" class="auth-link text-black">Account Already ?  <span class="font-weight-medium">Login</span></a><br />
+                      </div>
+                    </form>
+                  </form>
+                </div>
+              </div>
+           
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+    </div>
+    <!-- row ends -->
+  </div>
+  <!-- page-body-wrapper ends -->
+</div>
+

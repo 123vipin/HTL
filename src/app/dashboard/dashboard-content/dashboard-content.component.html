@@ -1,0 +1,66 @@
+
+
+
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card custom-card mb-4">
+      <div class="card-body">
+        <div class="row">
+
+          <div class="col-md-4">
+            <div class="box-shadwo-regular p-0">
+              <div class="row">
+                <div class="col-md-3 py-2 display-4 text-center" style="background: #42a7f4; color: #fff;"><span class="fa fa-user-circle" aria-hidden="true"></span></div>
+                <div class="col-md-9 text-center py-3" style="cursor:pointer" >
+                  <h5 style="color: deepskyblue">
+                    Total Product
+
+                  </h5>
+                  <span class="font-weight-bolder"> <b>  &nbsp;{{dashBoard.totalLeft + dashBoard.attempt}}</b></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="box-shadwo-regular p-0"(click)="allProfileViewList(1)">
+              <div class="row">
+                <div class="col-md-3 py-2 display-4 text-center" style="background: #42a7f4; color: #fff;"><span class="fa fa-user-circle" aria-hidden="true"></span></div>
+                <div class="col-md-9 text-center py-3" style="cursor:pointer">
+                  <h5 style="color: deepskyblue">
+                   Active Product
+
+                  </h5>
+                  <span class="font-weight-bolder"> <b>  &nbsp;{{dashBoard.totalLeft}}</b></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="box-shadwo-regular p-0"(click)="allProfileViewList(2)">
+              <div class="row">
+                <div class="col-md-3 py-2 display-4 text-center" style="background: #eb6c6c; color: #fff;"><i class="fa fa-user-circle" aria-hidden="true"></i></div>
+
+                <div class="col-md-9 text-center py-3">
+                  <h5 style="color: deepskyblue">
+                    Attempted Series
+
+                  </h5>
+                  <span class="font-weight-bolder"><b>{{dashBoard.attempt}}</b>&nbsp;</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

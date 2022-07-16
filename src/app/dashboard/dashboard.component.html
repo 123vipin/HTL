@@ -1,0 +1,36 @@
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <app-dashboard-header (valueChange)="displayMenu($event)"></app-dashboard-header>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper" style="padding-top: 61px">
+        <div class="row row-offcanvas row-offcanvas-right" [ngClass]="{'active':isActive}">
+            <!-- partial:partials/_sidebar.html -->
+           
+              <app-dashboard-sidemenu></app-dashboard-sidemenu>
+         
+          
+            <!-- partial -->
+            <div class="content-wrapper">
+              <!-- ROW ENDS -->
+      
+            <app-dashboard-content></app-dashboard-content>
+              <router-outlet >  </router-outlet>
+              <notifier-container></notifier-container>
+             <!-- <notifier-container></notifier-container> -->
+              
+              <!--<ngx-spinner></ngx-spinner>-->
+              <!-- ROW ENDS -->
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html --> 
+            <!-- <footer class="footer">
+               <app-dashboard-footer></app-dashboard-footer>
+            </footer> -->
+            <!-- partial -->
+        </div>
+        <!-- row-offcanvas ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+
+
