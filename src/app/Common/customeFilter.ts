@@ -11,6 +11,7 @@ export class SearchPipe implements PipeTransform {
   transform(value: any, args: any): any {
     if (!args) {
       return value;
+      
     }
     // Match in a case insensitive maneer
     const re = new RegExp(args, 'gi');
