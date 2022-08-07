@@ -12,6 +12,7 @@ using KaysthaMatrimoneySite.Data.ViewModels;
 using Web.Core.Users.Crytography;
 using System.Security.Cryptography;
 using KaysthaMatrimoneySite.Data.LoginEnum;
+using HTL.Data.Models;
 
 namespace KaysthaMatrimoneySite.Core.Services
 {
@@ -175,7 +176,7 @@ namespace KaysthaMatrimoneySite.Core.Services
 
         }
 
-        public int UpdatePassword(UserModel model)
+        public int UpdatePassword(UserPassword model)
         {
             var salt = CreateSalt(16).ToString();
             SqlConnection con;
@@ -241,5 +242,6 @@ namespace KaysthaMatrimoneySite.Core.Services
                 return (int)(CreateUser.Failed);
             }
         }
+
     }
 }

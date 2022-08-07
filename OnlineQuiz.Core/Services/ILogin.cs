@@ -1,4 +1,5 @@
-﻿using KaysthaMatrimoneySite.Data.Models;
+﻿using HTL.Data.Models;
+using KaysthaMatrimoneySite.Data.Models;
 using KaysthaMatrimoneySite.Data.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace KaysthaMatrimoneySite.Core.Services
         DashBoardViewModel GetAllDashBoardRecord(int userId);
         int SaveUser(UserModel model);
         UserModel ForgotSendMailPassword(UserModel model);
-        int UpdatePassword(UserModel model);
+        int UpdatePassword(UserPassword model);
         int SaveSuggestion(UserModel model);
     }
 

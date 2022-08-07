@@ -7,9 +7,9 @@ namespace HTL.Data.Models
     public class ProductCategory
     {
 
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Name { get; set; }
-        public bool isActive { get; set; }
+        public bool? isActive { get; set; }
         public string CreatedBy { get; set; }
         public DateTime createdTime { get; set; }
         public string description { get; set; }

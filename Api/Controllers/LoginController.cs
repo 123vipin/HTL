@@ -12,6 +12,7 @@ using KaysthaMatrimoneySite.Core.Services;
 using KaysthaMatrimoneySite.Core.DataContext;
 using KaysthaMatrimoneySite.Data.ViewModels;
 using KaysthaMatrimoneySite.Data.Models;
+using HTL.Data.Models;
 
 namespace KaysthaMatrimoneySite.API.Controllers
 {
@@ -67,13 +68,13 @@ namespace KaysthaMatrimoneySite.API.Controllers
             var data= _loginUser.ForgotSendMailPassword(userlogin);
             if(data.UserId>=0)
             {
-                _iemailSender.SendEmail(data, FilePath, userlogin, updatePasswrdLink);
+              //  _iemailSender.SendEmail(data, FilePath, userlogin, updatePasswrdLink);
             }
             return 1;
         }
 
         [HttpPost("UpdatePassword")]
-        public ActionResult<int> UpdatePassword(UserModel userlogin)
+        public ActionResult<int> UpdatePassword(UserPassword userlogin)
         {
             var data = _loginUser.UpdatePassword(userlogin);
             return data;

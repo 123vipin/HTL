@@ -209,7 +209,7 @@ namespace KaysthaMatrimoneySite.Core.Services
             {
                 status = 0;
 
-
+                
                 //return (int)(CreateUser.Failed);
             }
             return status;
@@ -270,6 +270,7 @@ namespace KaysthaMatrimoneySite.Core.Services
                         dbTrade.Name = reader.IsDBNull(reader.GetOrdinal("Name")) ? null : reader.GetString(reader.GetOrdinal("Name"));
                         dbTrade.description = reader.IsDBNull(reader.GetOrdinal("Description")) ? null : reader.GetString(reader.GetOrdinal("Description"));
                         dbTrade.Quantity = reader.GetInt32(reader.GetOrdinal("Quantity"));
+                        dbTrade.Category = reader.GetInt32(reader.GetOrdinal("category"));
                         dbTrade.Price = reader.GetDecimal(reader.GetOrdinal("Price"));
                         dbTrade.isActive = reader.GetBoolean(reader.GetOrdinal("isActive"));
                         dbTrade.ImageUrl = reader.IsDBNull(reader.GetOrdinal("ImageUrl")) ? null : reader.GetString(reader.GetOrdinal("ImageUrl"));

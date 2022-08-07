@@ -1,4 +1,5 @@
-﻿using KaysthaMatrimoneySite.Data.ViewModels;
+﻿using HTL.Data.Models;
+using KaysthaMatrimoneySite.Data.ViewModels;
 using MailKit.Security;
 using MimeKit;
 using System;

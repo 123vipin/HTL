@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace KaysthaMatrimoneySite.Data.ViewModels
+namespace HTL.Data.Models
 {
     public partial class UserModel
     {
@@ -24,4 +24,11 @@ namespace KaysthaMatrimoneySite.Data.ViewModels
 
 
     }
+
+    public class UserPassword
+    {
+        public int? UserId { get; set; }
+        public string Password { get; set; }
+    }
 }
+
