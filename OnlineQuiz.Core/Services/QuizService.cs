@@ -65,9 +65,11 @@ namespace KaysthaMatrimoneySite.Core.Services
             return QuestionNo;
         }
 
-        public IEnumerable<TestSeries> GetProductList(int userId, int GetValue, int skipValue,int statusType)
+        public ProductMainEditModel GetProductList(int userId, int GetValue, int skipValue,int statusType)
         {
             List<TestSeries> dbTradeList = new List<TestSeries>();
+            List<DropDownList> dcategoryList = new List<DropDownList>();
+            ProductMainEditModel product = new ProductMainEditModel();
             string connetionString = null;
             SqlConnection con;
             connetionString = _config.GetConnectionString("DbConnectionString");
@@ -96,6 +98,82 @@ namespace KaysthaMatrimoneySite.Core.Services
                             isActive = reader.GetBoolean(reader.GetOrdinal("isActive")),
                             ImageUrl = reader.IsDBNull(reader.GetOrdinal("ImageUrl")) ? null : reader.GetString(reader.GetOrdinal("ImageUrl")),
 
+                            addedItemQuantity = 1 ,
+                        addedItem=false,
+                        }); 
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+
+                reader.NextResult();
+                while (reader.Read())
+                {
+                    try
+                    {
+
+                        dcategoryList.Add(new DropDownList
+                        {
+                            
+                            Key = reader.GetInt32(reader.GetOrdinal("isdefault")),
+                            Value = reader.IsDBNull(reader.GetOrdinal("Name")) ? null : reader.GetString(reader.GetOrdinal("Name")),
+                            Id = reader.GetInt32(reader.GetOrdinal("id")),
+                        });
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+
+
+                reader.Close();
+                con.Close();
+            }
+            product.categoryList = dcategoryList;
+            product.dbTradeList = dbTradeList;
+            return product;
+        }
+
+
+        public UserMainEditModel GetUserList(int userId, int GetValue, int skipValue, int statusType)
+        {
+            List<UserModel> dbTradeList = new List<UserModel>();
+            List<DropDownList> dcategoryList = new List<DropDownList>();
+            UserMainEditModel product = new UserMainEditModel();
+            string connetionString = null;
+            SqlConnection con;
+            connetionString = _config.GetConnectionString("DbConnectionString");
+            con = new SqlConnection(connetionString);
+            using (SqlCommand Cmd = new SqlCommand("[dbo].[sp_getUserList]", con))
+            {
+                Cmd.CommandType = CommandType.StoredProcedure;
+                Cmd.Parameters.AddWithValue("@UserId", userId);
+                Cmd.Parameters.AddWithValue("@skipValue", skipValue);
+                Cmd.Parameters.AddWithValue("@GetValue", GetValue);
+                Cmd.Parameters.AddWithValue("@statusType", statusType);
+                con.Open();
+                SqlDataReader reader = Cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    try
+                    {
+                        dbTradeList.Add(new UserModel
+
+                        {
+                            RoleId = reader.GetInt32(reader.GetOrdinal("roleId")),
+                            UserId = reader.GetInt32(reader.GetOrdinal("UserId")),
+                            Name = reader.IsDBNull(reader.GetOrdinal("username")) ? null : reader.GetString(reader.GetOrdinal("username")),
+                            Email = reader.IsDBNull(reader.GetOrdinal("email")) ? null : reader.GetString(reader.GetOrdinal("email")),
+                            Phone = reader.GetInt32(reader.GetOrdinal("Phone")),
+                            IsActive = reader.GetBoolean(reader.GetOrdinal("IsActive")),
+                            CreatedBy = reader.IsDBNull(reader.GetOrdinal("CreatedBy")) ? null : reader.GetString(reader.GetOrdinal("CreatedBy")),
+                            UpdatedBy = reader.IsDBNull(reader.GetOrdinal("UpdatedBy")) ? null : reader.GetString(reader.GetOrdinal("UpdatedBy")),
+                            //CreatedDate = reader.IsDBNull(reader.GetOrdinal("CreatedBy")) ? DateTime.Now : reader.GetDateTime(reader.GetOrdinal("CreatedDate")),
+                            //UpdateDate = reader.IsDBNull(reader.GetOrdinal("UpdateDate")) ? DateTime.Now : reader.GetDateTime(reader.GetOrdinal("UpdateDate")),
 
                         });
                     }
@@ -104,11 +182,35 @@ namespace KaysthaMatrimoneySite.Core.Services
                         throw ex;
                     }
                 }
+
+                reader.NextResult();
+                while (reader.Read())
+                {
+                    try
+                    {
+
+                        dcategoryList.Add(new DropDownList
+                        {
+
+                            Key = reader.GetInt32(reader.GetOrdinal("isActive")),
+                            Value = reader.IsDBNull(reader.GetOrdinal("RoleName")) ? null : reader.GetString(reader.GetOrdinal("RoleName")),
+                            Id = reader.GetInt32(reader.GetOrdinal("id")),
+                        });
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+
+
                 reader.Close();
                 con.Close();
             }
-          
-            return dbTradeList;
+            product.categoryList = dcategoryList;
+            product.dbTradeList = dbTradeList;
+            return product;
         }
 
         public QuizlListMainModel GetQuizById(int userid, int getValue, int skipValue, int testId)

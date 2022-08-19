@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
-namespace HTL.Data.Models
+namespace OnlineQuiz.Data.ViewModels
 {
-    public partial class UserModel
+    public  class UserModel
     {
 
         public long? UserId { get; set; }
@@ -21,8 +20,13 @@ namespace HTL.Data.Models
      
         public long? Phone { get; set; }
         public string encraptedMail { get; set; }
-
-
+      
+        public string CreatedBy { get; set; }
+        public string UpdatedBy { get; set; }
+        public DateTime UpdateDate { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public int RoleId { get; set; }
+        public string Name { get; set; }
     }
 
     public class UserPassword

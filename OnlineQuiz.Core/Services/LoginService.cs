@@ -13,6 +13,7 @@ using Web.Core.Users.Crytography;
 using System.Security.Cryptography;
 using KaysthaMatrimoneySite.Data.LoginEnum;
 using HTL.Data.Models;
+using OnlineQuiz.Data.ViewModels;
 
 namespace KaysthaMatrimoneySite.Core.Services
 {

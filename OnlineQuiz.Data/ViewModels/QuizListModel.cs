@@ -59,6 +59,8 @@ namespace OnlineQuiz.Data.ViewModels
         public bool isActive { get; set; }
 
         public int Category { get; set; }
-
+        public bool? addedItem { get; set; }
+        public int? addedItemQuantity { get; set; }
+       
     }
 }

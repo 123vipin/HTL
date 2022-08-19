@@ -10,8 +10,8 @@ namespace KaysthaMatrimoneySite.Core.Services
 {
     public interface IQuiz
     {
- 
-        IEnumerable<TestSeries> GetProductList(int userid,  int getValue, int skipValue,int statusType);
+
+        ProductMainEditModel GetProductList(int userid,  int getValue, int skipValue,int statusType);
         QuizlListMainModel GetQuizById(int userid, int getValue, int skipValue, int testId);
         int AddQuestion(AddQuestion model);
         int SaveProduct(TestSeries model);
@@ -26,6 +26,8 @@ namespace KaysthaMatrimoneySite.Core.Services
         IEnumerable<PaperViewModel> GetPaperAllList(int userid, int getValue, int skipValue, int statusType);
         IEnumerable<ProductCategory> GetProductCategoryList(int userid, int getValue, int skipValue);
         int saveProductCategory(ProductCategory model);
+        UserMainEditModel GetUserList(int userid, int getValue, int skipValue, int statusType);
+        
     }
     
 

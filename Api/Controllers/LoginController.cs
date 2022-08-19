@@ -13,6 +13,7 @@ using KaysthaMatrimoneySite.Core.DataContext;
 using KaysthaMatrimoneySite.Data.ViewModels;
 using KaysthaMatrimoneySite.Data.Models;
 using HTL.Data.Models;
+using OnlineQuiz.Data.ViewModels;
 
 namespace KaysthaMatrimoneySite.API.Controllers
 {

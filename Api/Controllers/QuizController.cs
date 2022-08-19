@@ -39,12 +39,18 @@ namespace KaysthaMatrimoneySite.API.Controllers
 
         }
         [HttpGet("GetProductList/{UserId}/{GetValue}/{skipValue}/{statusType}")]
-        public IEnumerable<TestSeries> GetProductList(int Userid, int GetValue, int skipValue, int statusType)
+        public ProductMainEditModel GetProductList(int Userid, int GetValue, int skipValue, int statusType)
         {
            
             return _quiz.GetProductList(Userid, GetValue, skipValue, statusType);
         }
 
+        [HttpGet("GetUserList/{UserId}/{GetValue}/{skipValue}/{statusType}")]
+        public UserMainEditModel GetUserList(int Userid, int GetValue, int skipValue, int statusType)
+        {
+
+            return _quiz.GetUserList(Userid, GetValue, skipValue, statusType);
+        }
 
         [HttpGet("GetPaperList/{UserId}/{GetValue}/{skipValue}/{statusType}")]
         public IEnumerable<PaperViewModel> GetPaperList(int Userid, int GetValue, int skipValue, int statusType)
