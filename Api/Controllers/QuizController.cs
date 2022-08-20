@@ -52,6 +52,22 @@ namespace KaysthaMatrimoneySite.API.Controllers
             return _quiz.GetUserList(Userid, GetValue, skipValue, statusType);
         }
 
+        [HttpGet("getRoleDataById/{UserId}/{GetValue}/{skipValue}/{statusType}")]
+        public RoleMainEditModel getRoleDataById(int roleId, int GetValue, int skipValue, int statusType)
+        {
+
+            return _quiz.getRoleDataById(roleId, GetValue, skipValue, statusType);
+        }
+
+        
+        [HttpGet("GetRoleList/{UserId}/{GetValue}/{skipValue}/{statusType}")]
+        public List<DropDownList> GetRoleList(int Userid, int GetValue, int skipValue, int statusType)
+        {
+
+            return _quiz.GetRoleList(Userid, GetValue, skipValue, statusType);
+        }
+        
+
         [HttpGet("GetPaperList/{UserId}/{GetValue}/{skipValue}/{statusType}")]
         public IEnumerable<PaperViewModel> GetPaperList(int Userid, int GetValue, int skipValue, int statusType)
         {

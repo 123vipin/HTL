@@ -33,4 +33,11 @@ namespace HTL.Data.Models
         public List<DropDownList> categoryList { get; set; }
 
     }
+
+    public class RoleMainEditModel
+    {
+        public List<DropDownList> dbTradeList { get; set; }
+        public List<DropDownList> categoryList { get; set; }
+
+    }
 }

@@ -14,5 +14,7 @@ namespace KaysthaMatrimoneySite.Data.ViewModels
         public string big { get; set; }
         public string medium { get; set; }
         public int Id { get; set; }
+        public bool IsActive { get; set; }
+        public int Roleid { get; set; }
     }
 }

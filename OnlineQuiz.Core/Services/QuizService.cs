@@ -164,14 +164,15 @@ namespace KaysthaMatrimoneySite.Core.Services
                         dbTradeList.Add(new UserModel
 
                         {
-                            RoleId = reader.GetInt32(reader.GetOrdinal("roleId")),
-                            UserId = reader.GetInt32(reader.GetOrdinal("UserId")),
+                          RoleId = reader.GetInt32(reader.GetOrdinal("roleId")),
+                          UserId = reader.GetInt64(reader.GetOrdinal("UserId")),
                             Name = reader.IsDBNull(reader.GetOrdinal("username")) ? null : reader.GetString(reader.GetOrdinal("username")),
                             Email = reader.IsDBNull(reader.GetOrdinal("email")) ? null : reader.GetString(reader.GetOrdinal("email")),
-                            Phone = reader.GetInt32(reader.GetOrdinal("Phone")),
+                           Phone = reader.GetInt64(reader.GetOrdinal("Phone")),
+                            RoleName = reader.IsDBNull(reader.GetOrdinal("RoleName")) ? null : reader.GetString(reader.GetOrdinal("RoleName")),
                             IsActive = reader.GetBoolean(reader.GetOrdinal("IsActive")),
-                            CreatedBy = reader.IsDBNull(reader.GetOrdinal("CreatedBy")) ? null : reader.GetString(reader.GetOrdinal("CreatedBy")),
-                            UpdatedBy = reader.IsDBNull(reader.GetOrdinal("UpdatedBy")) ? null : reader.GetString(reader.GetOrdinal("UpdatedBy")),
+                           // CreatedBy = reader.IsDBNull(reader.GetOrdinal("CreatedBy")) ? null : reader.GetString(reader.GetOrdinal("CreatedBy")),
+                            //UpdatedBy = reader.IsDBNull(reader.GetOrdinal("UpdatedBy")) ? null : reader.GetString(reader.GetOrdinal("UpdatedBy")),
                             //CreatedDate = reader.IsDBNull(reader.GetOrdinal("CreatedBy")) ? DateTime.Now : reader.GetDateTime(reader.GetOrdinal("CreatedDate")),
                             //UpdateDate = reader.IsDBNull(reader.GetOrdinal("UpdateDate")) ? DateTime.Now : reader.GetDateTime(reader.GetOrdinal("UpdateDate")),
 
@@ -191,10 +192,10 @@ namespace KaysthaMatrimoneySite.Core.Services
 
                         dcategoryList.Add(new DropDownList
                         {
-
-                            Key = reader.GetInt32(reader.GetOrdinal("isActive")),
+                            IsActive = reader.GetBoolean(reader.GetOrdinal("IsActive")),
+                          
                             Value = reader.IsDBNull(reader.GetOrdinal("RoleName")) ? null : reader.GetString(reader.GetOrdinal("RoleName")),
-                            Id = reader.GetInt32(reader.GetOrdinal("id")),
+                            Key = reader.GetInt32(reader.GetOrdinal("id")),
                         });
 
                     }
@@ -211,6 +212,54 @@ namespace KaysthaMatrimoneySite.Core.Services
             product.categoryList = dcategoryList;
             product.dbTradeList = dbTradeList;
             return product;
+        }
+
+
+        public List<DropDownList> GetRoleList(int userId, int GetValue, int skipValue, int statusType)
+        {
+          
+            List<DropDownList> dcategoryList = new List<DropDownList>();
+           
+            string connetionString = null;
+            SqlConnection con;
+            connetionString = _config.GetConnectionString("DbConnectionString");
+            con = new SqlConnection(connetionString);
+            using (SqlCommand Cmd = new SqlCommand("[dbo].[sp_getRoleList]", con))
+            {
+                Cmd.CommandType = CommandType.StoredProcedure;
+                Cmd.Parameters.AddWithValue("@UserId", userId);
+                Cmd.Parameters.AddWithValue("@skipValue", skipValue);
+                Cmd.Parameters.AddWithValue("@GetValue", GetValue);
+                Cmd.Parameters.AddWithValue("@statusType", statusType);
+                con.Open();
+                SqlDataReader reader = Cmd.ExecuteReader();
+             
+                while (reader.Read())
+                {
+                    try
+                    {
+
+                        dcategoryList.Add(new DropDownList
+                        {
+                            IsActive = reader.GetBoolean(reader.GetOrdinal("IsActive")),
+
+                            Value = reader.IsDBNull(reader.GetOrdinal("RoleName")) ? null : reader.GetString(reader.GetOrdinal("RoleName")),
+                            Key = reader.GetInt32(reader.GetOrdinal("id")),
+                        });
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+
+
+                reader.Close();
+                con.Close();
+            }
+           
+            return dcategoryList;
         }
 
         public QuizlListMainModel GetQuizById(int userid, int getValue, int skipValue, int testId)
@@ -694,6 +743,76 @@ namespace KaysthaMatrimoneySite.Core.Services
             }
             return status;
         }
+
+        public RoleMainEditModel getRoleDataById(int roleId, int GetValue, int skipValue, int statusType)
+        {
+            List<DropDownList> dbTradeList = new List<DropDownList>();
+            List<DropDownList> dcategoryList = new List<DropDownList>();
+            RoleMainEditModel product = new RoleMainEditModel();
+            string connetionString = null;
+            SqlConnection con;
+            connetionString = _config.GetConnectionString("DbConnectionString");
+            con = new SqlConnection(connetionString);
+            using (SqlCommand Cmd = new SqlCommand("[dbo].[sp_getRoleById]", con))
+            {
+                Cmd.CommandType = CommandType.StoredProcedure;
+                Cmd.Parameters.AddWithValue("@roleId", roleId);
+                Cmd.Parameters.AddWithValue("@skipValue", skipValue);
+                Cmd.Parameters.AddWithValue("@GetValue", GetValue);
+                Cmd.Parameters.AddWithValue("@statusType", statusType);
+                con.Open();
+                SqlDataReader reader = Cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    try
+                    {
+                        dbTradeList.Add(new DropDownList
+
+                        {
+                            Roleid = reader.GetInt32(reader.GetOrdinal("Roleid")),
+
+                            Value = reader.IsDBNull(reader.GetOrdinal("menu")) ? null : reader.GetString(reader.GetOrdinal("menu")),
+                            Key = reader.GetInt32(reader.GetOrdinal("id")),
+
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+
+                reader.NextResult();
+                while (reader.Read())
+                {
+                    try
+                    {
+
+                        dcategoryList.Add(new DropDownList
+                        {
+                            IsActive = reader.GetBoolean(reader.GetOrdinal("IsActive")),
+
+                            Value = reader.IsDBNull(reader.GetOrdinal("RoleName")) ? null : reader.GetString(reader.GetOrdinal("RoleName")),
+                            Key = reader.GetInt32(reader.GetOrdinal("id")),
+                        });
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+
+
+                reader.Close();
+                con.Close();
+            }
+            product.categoryList = dcategoryList;
+            product.dbTradeList = dbTradeList;
+            return product;
+        }
+
+
     }
 }
 ; 

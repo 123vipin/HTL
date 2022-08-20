@@ -27,9 +27,13 @@ namespace KaysthaMatrimoneySite.Core.Services
         IEnumerable<ProductCategory> GetProductCategoryList(int userid, int getValue, int skipValue);
         int saveProductCategory(ProductCategory model);
         UserMainEditModel GetUserList(int userid, int getValue, int skipValue, int statusType);
-        
+        List<DropDownList> GetRoleList(int userid, int getValue, int skipValue, int statusType);
+        RoleMainEditModel getRoleDataById(int roleId, int getValue, int skipValue, int statusType);
+
     }
     
+
+
 
 
 }

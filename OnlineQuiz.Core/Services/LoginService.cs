@@ -129,9 +129,11 @@ namespace KaysthaMatrimoneySite.Core.Services
                     Cmd.Parameters.AddWithValue("@Email", model.Email);
                     Cmd.Parameters.AddWithValue("@Password", Cryptography.Encrypt(model.Password, salt.ToString()));
                     Cmd.Parameters.AddWithValue("@PassWordSalt", salt.ToString());
+                    Cmd.Parameters.AddWithValue("@UserId", model.UserId);
+                    Cmd.Parameters.AddWithValue("@RoleId", model.RoleId);
                     Cmd.Parameters.Add("@status", SqlDbType.Int).Direction = ParameterDirection.Output;
-                    con.Open();
-                    SqlDataReader reader = Cmd.ExecuteReader();
+                    con.Open(); 
+                     SqlDataReader reader = Cmd.ExecuteReader();
                     int contractID = Convert.ToInt32(Cmd.Parameters["@status"].Value);
                    
                     reader.Close();
