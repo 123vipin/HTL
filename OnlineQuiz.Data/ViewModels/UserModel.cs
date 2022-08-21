@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KaysthaMatrimoneySite.Data.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -34,6 +35,16 @@ namespace OnlineQuiz.Data.ViewModels
     {
         public int? UserId { get; set; }
         public string Password { get; set; }
+    }
+
+    public class RoleModel
+    {
+        public int? UserId { get; set; }
+        public int? RoleId { get; set; }
+        public string RoleName { get; set; }
+
+        public string menuId { get; set; }
+
     }
 }
 

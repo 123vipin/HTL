@@ -145,5 +145,13 @@ namespace KaysthaMatrimoneySite.API.Controllers
             var data = _loginUser.SaveSuggestion(userlogin);
             return data;
         }
+
+        [HttpPost("saveRole")]
+        public ActionResult<int> saveRole(RoleModel model)
+        {
+
+            return _loginUser.saveRole(model);
+
+        }
     }
 }

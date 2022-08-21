@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [OnlineQuiz]    Script Date: 19-08-2022 18:33:29 ******/
+/****** Object:  Database [OnlineQuiz]    Script Date: 21-08-2022 17:04:04 ******/
 CREATE DATABASE [OnlineQuiz]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -80,7 +80,7 @@ ALTER DATABASE [OnlineQuiz] SET QUERY_STORE = OFF
 GO
 USE [OnlineQuiz]
 GO
-/****** Object:  Table [dbo].[AttemptQuiz]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  Table [dbo].[AttemptQuiz]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -98,7 +98,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[config]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  Table [dbo].[config]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -123,7 +123,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Demo]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  Table [dbo].[Demo]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -137,7 +137,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[feedback]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  Table [dbo].[feedback]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -153,7 +153,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[MasterQuestionPdf]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  Table [dbo].[MasterQuestionPdf]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -174,13 +174,13 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Menu]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  Table [dbo].[Menu]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Menu](
-	[Id] [int] NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Menu] [nvarchar](200) NULL,
 	[CreatedDate] [datetime] NULL,
 	[CreatedBy] [int] NULL,
@@ -189,7 +189,7 @@ CREATE TABLE [dbo].[Menu](
 	[isActive] [bit] NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Option]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  Table [dbo].[Option]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -207,7 +207,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PaperType]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  Table [dbo].[PaperType]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -222,7 +222,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PdfSeries]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  Table [dbo].[PdfSeries]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -243,7 +243,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Product]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  Table [dbo].[Product]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -267,7 +267,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ProductCategory]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  Table [dbo].[ProductCategory]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -288,7 +288,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Question]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  Table [dbo].[Question]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -307,7 +307,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[QuestionType]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  Table [dbo].[QuestionType]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -324,13 +324,13 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Role]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  Table [dbo].[Role]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Role](
-	[Id] [int] NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[RoleName] [nvarchar](200) NULL,
 	[CreatedDate] [datetime] NULL,
 	[CreatedBy] [int] NULL,
@@ -339,13 +339,13 @@ CREATE TABLE [dbo].[Role](
 	[isActive] [bit] NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[RoleMenuPermissin]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  Table [dbo].[RoleMenuPermissin]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[RoleMenuPermissin](
-	[Id] [int] NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Menu] [nvarchar](200) NULL,
 	[RoleId] [int] NULL,
 	[CreatedDate] [datetime] NULL,
@@ -355,7 +355,7 @@ CREATE TABLE [dbo].[RoleMenuPermissin](
 	[isActive] [bit] NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TbL_User]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  Table [dbo].[TbL_User]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -382,7 +382,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TestSeries]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  Table [dbo].[TestSeries]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -477,6 +477,26 @@ GO
 INSERT [dbo].[MasterQuestionPdf] ([Id], [qustinonLink], [AnswerLink], [PaperType], [Yeasr], [IsActive], [CreatedDate], [PName], [SMonth]) VALUES (3, N'https://www.homeworkmarket.com/files/theysayisaywithreadings3e-pdf-4618093', N'https://www.homeworkmarket.com/files/theysayisaywithreadings3e-pdf-4618093', 3, N'2020', 1, CAST(N'2021-04-24T12:44:34.623' AS DateTime), N'Hindi English', NULL)
 GO
 SET IDENTITY_INSERT [dbo].[MasterQuestionPdf] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Menu] ON 
+GO
+INSERT [dbo].[Menu] ([Id], [Menu], [CreatedDate], [CreatedBy], [UpdatedDate], [UpdateBy], [isActive]) VALUES (1, N'Role Permission  Management', NULL, NULL, NULL, NULL, 1)
+GO
+INSERT [dbo].[Menu] ([Id], [Menu], [CreatedDate], [CreatedBy], [UpdatedDate], [UpdateBy], [isActive]) VALUES (2, N'Product List', NULL, NULL, NULL, NULL, 1)
+GO
+INSERT [dbo].[Menu] ([Id], [Menu], [CreatedDate], [CreatedBy], [UpdatedDate], [UpdateBy], [isActive]) VALUES (3, N'User Management', NULL, NULL, NULL, NULL, 1)
+GO
+INSERT [dbo].[Menu] ([Id], [Menu], [CreatedDate], [CreatedBy], [UpdatedDate], [UpdateBy], [isActive]) VALUES (4, N'Dashboard', NULL, NULL, NULL, NULL, 1)
+GO
+INSERT [dbo].[Menu] ([Id], [Menu], [CreatedDate], [CreatedBy], [UpdatedDate], [UpdateBy], [isActive]) VALUES (5, N'Product List', NULL, NULL, NULL, NULL, 1)
+GO
+INSERT [dbo].[Menu] ([Id], [Menu], [CreatedDate], [CreatedBy], [UpdatedDate], [UpdateBy], [isActive]) VALUES (6, N'Product Category', NULL, NULL, NULL, NULL, 1)
+GO
+INSERT [dbo].[Menu] ([Id], [Menu], [CreatedDate], [CreatedBy], [UpdatedDate], [UpdateBy], [isActive]) VALUES (7, N'Setting', NULL, NULL, NULL, NULL, 1)
+GO
+INSERT [dbo].[Menu] ([Id], [Menu], [CreatedDate], [CreatedBy], [UpdatedDate], [UpdateBy], [isActive]) VALUES (8, N'Feedback', NULL, NULL, NULL, NULL, 1)
+GO
+SET IDENTITY_INSERT [dbo].[Menu] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Option] ON 
 GO
@@ -1800,15 +1820,35 @@ INSERT [dbo].[QuestionType] ([Id], [Value], [IsActive], [CreatedDate], [subjectC
 GO
 SET IDENTITY_INSERT [dbo].[QuestionType] OFF
 GO
+SET IDENTITY_INSERT [dbo].[Role] ON 
+GO
+INSERT [dbo].[Role] ([Id], [RoleName], [CreatedDate], [CreatedBy], [UpdatedDate], [UpdateBy], [isActive]) VALUES (1, N'System Administrator', CAST(N'2022-08-20T11:34:47.273' AS DateTime), 1, CAST(N'2022-08-20T11:34:47.273' AS DateTime), 1, 1)
+GO
+INSERT [dbo].[Role] ([Id], [RoleName], [CreatedDate], [CreatedBy], [UpdatedDate], [UpdateBy], [isActive]) VALUES (2, N'2eee', CAST(N'2022-08-21T15:23:33.037' AS DateTime), 2, CAST(N'2022-08-21T11:28:26.360' AS DateTime), 2, 1)
+GO
+SET IDENTITY_INSERT [dbo].[Role] OFF
+GO
+SET IDENTITY_INSERT [dbo].[RoleMenuPermissin] ON 
+GO
+INSERT [dbo].[RoleMenuPermissin] ([Id], [Menu], [RoleId], [CreatedDate], [CreatedBy], [UpdatedDate], [UpdateBy], [isActive]) VALUES (25, N'2', 2, CAST(N'2022-08-21T16:58:26.357' AS DateTime), 2, NULL, NULL, 1)
+GO
+INSERT [dbo].[RoleMenuPermissin] ([Id], [Menu], [RoleId], [CreatedDate], [CreatedBy], [UpdatedDate], [UpdateBy], [isActive]) VALUES (26, N'2', 2, CAST(N'2022-08-21T16:58:26.357' AS DateTime), 2, NULL, NULL, 1)
+GO
+INSERT [dbo].[RoleMenuPermissin] ([Id], [Menu], [RoleId], [CreatedDate], [CreatedBy], [UpdatedDate], [UpdateBy], [isActive]) VALUES (27, N'2', 2, CAST(N'2022-08-21T16:58:26.357' AS DateTime), 2, NULL, NULL, 1)
+GO
+INSERT [dbo].[RoleMenuPermissin] ([Id], [Menu], [RoleId], [CreatedDate], [CreatedBy], [UpdatedDate], [UpdateBy], [isActive]) VALUES (28, N'2', 2, CAST(N'2022-08-21T16:58:26.357' AS DateTime), 2, NULL, NULL, 1)
+GO
+SET IDENTITY_INSERT [dbo].[RoleMenuPermissin] OFF
+GO
 SET IDENTITY_INSERT [dbo].[TbL_User] ON 
 GO
-INSERT [dbo].[TbL_User] ([UserId], [FirstName], [LastName], [UserName], [Password], [Salt], [EmailSalt], [IsActive], [Status], [CreatedDate], [UpdateDate], [Phone], [roleId], [CreatedBy], [UpdatedBy]) VALUES (1, N'nitin', N'nitin', N'nitinsaxenahapur@gmail.com', N'5P0lKecWmzc+8qMnEngw8Q==', N'a30B9swlu6aq+iiJWnOohw==', N'yyGbHySVlt6vCj8kRw5BVg==', 1, 1, CAST(N'2021-04-03T19:28:37.537' AS DateTime), CAST(N'2021-04-03T19:28:37.537' AS DateTime), 0, NULL, NULL, NULL)
+INSERT [dbo].[TbL_User] ([UserId], [FirstName], [LastName], [UserName], [Password], [Salt], [EmailSalt], [IsActive], [Status], [CreatedDate], [UpdateDate], [Phone], [roleId], [CreatedBy], [UpdatedBy]) VALUES (1, N'nitin nitin nitin nitin', N'nitin', N'nitinsaxenahapur@gmail.com', N'5P0lKecWmzc+8qMnEngw8Q==', N'a30B9swlu6aq+iiJWnOohw==', N'yyGbHySVlt6vCj8kRw5BVg==', 1, 1, CAST(N'2021-04-03T19:28:37.537' AS DateTime), CAST(N'2022-08-21T11:04:19.310' AS DateTime), 0, 2, NULL, 1)
 GO
-INSERT [dbo].[TbL_User] ([UserId], [FirstName], [LastName], [UserName], [Password], [Salt], [EmailSalt], [IsActive], [Status], [CreatedDate], [UpdateDate], [Phone], [roleId], [CreatedBy], [UpdatedBy]) VALUES (2, N'testw', N'testw', N'infoindia78@gmail.com', N'5kZymHaFHuRbJvtffgKadQ==', N'0Gh6naCQneifGmpwwustIw==', N'i+U9N0UXkLAJNDqR2jAd0g==', 1, 1, CAST(N'2021-04-10T16:37:42.873' AS DateTime), CAST(N'2021-04-10T16:37:42.873' AS DateTime), 0, NULL, NULL, NULL)
+INSERT [dbo].[TbL_User] ([UserId], [FirstName], [LastName], [UserName], [Password], [Salt], [EmailSalt], [IsActive], [Status], [CreatedDate], [UpdateDate], [Phone], [roleId], [CreatedBy], [UpdatedBy]) VALUES (2, N'testw testw', N'testw', N'infoindia78@gmail.com', N'5kZymHaFHuRbJvtffgKadQ==', N'0Gh6naCQneifGmpwwustIw==', N'i+U9N0UXkLAJNDqR2jAd0g==', 1, 1, CAST(N'2021-04-10T16:37:42.873' AS DateTime), CAST(N'2022-08-20T08:28:14.940' AS DateTime), 0, 1, NULL, 2)
 GO
-INSERT [dbo].[TbL_User] ([UserId], [FirstName], [LastName], [UserName], [Password], [Salt], [EmailSalt], [IsActive], [Status], [CreatedDate], [UpdateDate], [Phone], [roleId], [CreatedBy], [UpdatedBy]) VALUES (3, N'Neha', N'Neha', N'neha@gmail.com', N'DNaJc908Nt+pNbwlL5bBRQ==', N'71Yf8Jyo9Enmi/55zME41A==', N'71Yf8Jyo9Enmi/55zME41A==', 1, 1, CAST(N'2021-04-10T19:01:38.573' AS DateTime), CAST(N'2021-04-10T19:01:38.573' AS DateTime), 0, NULL, NULL, NULL)
+INSERT [dbo].[TbL_User] ([UserId], [FirstName], [LastName], [UserName], [Password], [Salt], [EmailSalt], [IsActive], [Status], [CreatedDate], [UpdateDate], [Phone], [roleId], [CreatedBy], [UpdatedBy]) VALUES (3, N'Neha Neha', N'Neha', N'neha@gmail.com', N'DNaJc908Nt+pNbwlL5bBRQ==', N'71Yf8Jyo9Enmi/55zME41A==', N'71Yf8Jyo9Enmi/55zME41A==', 1, 1, CAST(N'2021-04-10T19:01:38.573' AS DateTime), CAST(N'2022-08-20T08:28:18.973' AS DateTime), 0, 1, NULL, 3)
 GO
-INSERT [dbo].[TbL_User] ([UserId], [FirstName], [LastName], [UserName], [Password], [Salt], [EmailSalt], [IsActive], [Status], [CreatedDate], [UpdateDate], [Phone], [roleId], [CreatedBy], [UpdatedBy]) VALUES (4, N'vishal', N'vishal', N'infoindia178@gmail.com', N'WJHRCs2JsP0F20Q8moQeAQ==', N'RV3GuHHGbTSC6ENVl/j97w==', N'RV3GuHHGbTSC6ENVl/j97w==', 1, 1, CAST(N'2021-12-11T18:01:41.643' AS DateTime), CAST(N'2021-12-11T18:01:41.643' AS DateTime), 8755673969, NULL, NULL, NULL)
+INSERT [dbo].[TbL_User] ([UserId], [FirstName], [LastName], [UserName], [Password], [Salt], [EmailSalt], [IsActive], [Status], [CreatedDate], [UpdateDate], [Phone], [roleId], [CreatedBy], [UpdatedBy]) VALUES (4, N'vishal vishal vishal', N'vishal', N'infoindia178@gmail.com', N'WJHRCs2JsP0F20Q8moQeAQ==', N'RV3GuHHGbTSC6ENVl/j97w==', N'RV3GuHHGbTSC6ENVl/j97w==', 1, 1, CAST(N'2021-12-11T18:01:41.643' AS DateTime), CAST(N'2022-08-20T08:28:24.983' AS DateTime), 8755673969, 1, NULL, 4)
 GO
 SET IDENTITY_INSERT [dbo].[TbL_User] OFF
 GO
@@ -1832,7 +1872,7 @@ ALTER TABLE [dbo].[ProductCategory] ADD  DEFAULT ((0)) FOR [isActive]
 GO
 ALTER TABLE [dbo].[ProductCategory] ADD  DEFAULT ((0)) FOR [isDefault]
 GO
-/****** Object:  StoredProcedure [dbo].[get_Question_list]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  StoredProcedure [dbo].[get_Question_list]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1847,7 +1887,7 @@ BEGIN
 select id,SeriesName PName,isActive from TestSeries where QuestionType=@paperType and IsActive=1
 END
 GO
-/****** Object:  StoredProcedure [dbo].[save_Product]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  StoredProcedure [dbo].[save_Product]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1896,7 +1936,7 @@ END
 END
 
 GO
-/****** Object:  StoredProcedure [dbo].[save_ProductCtaegory]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  StoredProcedure [dbo].[save_ProductCtaegory]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1939,7 +1979,7 @@ END
   
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_feedback]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  StoredProcedure [dbo].[sp_feedback]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1967,7 +2007,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_getDashBardDetails]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  StoredProcedure [dbo].[sp_getDashBardDetails]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1994,7 +2034,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_getPaperSeries]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  StoredProcedure [dbo].[sp_getPaperSeries]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2026,7 +2066,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_getPaperTypeList]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  StoredProcedure [dbo].[sp_getPaperTypeList]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2051,7 +2091,7 @@ END
 ENd
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_getProductcategoryList]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  StoredProcedure [dbo].[sp_getProductcategoryList]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2068,7 +2108,7 @@ select Id,Name,pc.isActive,tl.UserName,pc.CreatedDate from ProductCategory pc
 left join TbL_User tl on tl.UserId=pc.CreatedBy
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_getProductDatabyId]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  StoredProcedure [dbo].[sp_getProductDatabyId]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2091,7 +2131,7 @@ END
   
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_getQuestionTypeList]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  StoredProcedure [dbo].[sp_getQuestionTypeList]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2105,7 +2145,70 @@ BEGIN
 select Id as KEYId,Value as Text from QuestionType
 ENd
 GO
-/****** Object:  StoredProcedure [dbo].[sp_getTestSeries]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  StoredProcedure [dbo].[sp_getRoleById]    Script Date: 21-08-2022 17:04:05 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+  
+  
+-- exec  [sp_getLatestJoined] 1, 'gh'  
+CREATE proc [dbo].[sp_getRoleById]  
+(  
+@roleId int ,  
+@skipValue int ,  
+@GetValue int,  
+@statusType int  
+)  
+as  
+BEGIN   
+if(@roleId=0)
+BEGIN
+select menu,id,0 as roleId from Menu where isActive=1
+ select m.menu, isnull(RoleId,0) as RoleId,m.id as id from Menu m 
+ left join RoleMenuPermissin  rm on rm.RoleId=m.Id
+ where rm.RoleId=@roleId and m.isActive=1
+select RoleName ,isActive,id from [dbo].[Role]  where id=@roleId
+ END
+ ELSE
+ BEGIN
+ select menu,id,0 as roleId from Menu where isActive=1
+ select m.menu, isnull(RoleId,0) as RoleId,m.id as id from Menu m 
+ left join RoleMenuPermissin  rm on rm.RoleId=m.Id
+ where rm.RoleId=@roleId and m.isActive=1
+
+ select RoleName ,isActive,id from [dbo].[Role]  where id=@roleId
+
+
+
+ END
+END  
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_getRoleList]    Script Date: 21-08-2022 17:04:05 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+  
+  
+-- exec  [sp_getLatestJoined] 1, 'gh'  
+Create proc [dbo].[sp_getRoleList]  
+(  
+@UserId int ,  
+@skipValue int ,  
+@GetValue int,  
+@statusType int  
+)  
+as  
+BEGIN   
+
+ select RoleName ,isActive,id from [dbo].[Role]  order by rolename asc
+END  
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_getTestSeries]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2151,7 +2254,7 @@ END
   
   
 GO
-/****** Object:  StoredProcedure [dbo].[sp_getTestSeriesById]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  StoredProcedure [dbo].[sp_getTestSeriesById]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2212,7 +2315,7 @@ ROllBAck Transaction
     
     
 GO
-/****** Object:  StoredProcedure [dbo].[sp_getUserList]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  StoredProcedure [dbo].[sp_getUserList]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2229,16 +2332,26 @@ CREATE proc [dbo].[sp_getUserList]
 )  
 as  
 BEGIN   
-
-select  (FirstName +' ' +Lastname) as username ,UserName as email ,tblu.IsActive,Phone,rl.RoleName,rl.id as roleId,UserId,
+if(@statusType=0)
+BEGIN
+select  (FirstName +' ' +Lastname) as username ,UserName as email ,tblu.IsActive,Phone,isnull(rl.RoleName,'N/A')  as RoleName,isnull(rl.id,0) as roleId,UserId,
 tblu.CreatedDate,isnull((select top 1 username  from TbL_User where UserId=tblu.CreatedBy),'')  as CreatedBy ,tblu.UpdateDate,tblu.UpdatedBy from TbL_User tblu
 left join  [dbo].[Role] rl on tblu.Roleid=rl.Id
  select RoleName ,isActive,id from [dbo].[Role]  where isActive=1 order by rolename asc
+ END
+ BEGIN
 
+ select  (FirstName +' ' +Lastname) as username ,UserName as email ,tblu.IsActive,Phone,isnull(rl.RoleName,'N/A')  as RoleName,isnull(rl.id,0) as roleId,UserId,
+tblu.CreatedDate,isnull((select top 1 username  from TbL_User where UserId=tblu.CreatedBy),'')  as CreatedBy ,tblu.UpdateDate,tblu.UpdatedBy from TbL_User tblu
+left join  [dbo].[Role] rl on tblu.Roleid=rl.Id
+where tblu.UserId=@UserId
+ select RoleName ,isActive,id from [dbo].[Role]  where isActive=1 order by rolename asc
+
+ END
 END  
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_PaperSeries]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  StoredProcedure [dbo].[sp_PaperSeries]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2273,7 +2386,7 @@ END
   
   
 GO
-/****** Object:  StoredProcedure [dbo].[sp_PrductList]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  StoredProcedure [dbo].[sp_PrductList]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2304,7 +2417,7 @@ select Name,Description,ImageUrl,Price,Quantity,isActive,id,category from Produc
 END  
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_publish]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  StoredProcedure [dbo].[sp_publish]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2336,7 +2449,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_Question]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  StoredProcedure [dbo].[sp_Question]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2378,7 +2491,70 @@ END
   
   
 GO
-/****** Object:  StoredProcedure [dbo].[sp_saveUser]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  StoredProcedure [dbo].[sp_saveRole]    Script Date: 21-08-2022 17:04:05 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE proc [dbo].[sp_saveRole]
+(
+@rolename nvarchar(300),
+@roleId int null,
+@menuid nvarchar(max),
+@UserId int,
+@status INT OUTPUT
+
+)
+as 
+BEGIN
+Declare @profileId nvarchar(max)
+if(@roleId=0)
+BEGIN
+if exists(select top 1 * from Role where RoleName=@rolename)
+BEGIN
+select @status=1
+return ;
+END
+ELSE
+BEGIN
+ set @profileId= 'QT' + REPLACE(STR(isnull((select top 1 Id from  Role order by Id desc ),1),5),' ', '0') 
+insert into Role(RoleName,IsActive,CreatedDate,CreatedBy) 
+values(@rolename,1,getdate(),@UserId)
+set @roleId=@@IDENTITY
+insert into RoleMenuPermissin(Menu,RoleId,CreatedBy,CreatedDate,isActive)
+select TRY_CAST(value AS INT),@roleId,@UserId,GETDATE(),1
+FROM   STRING_SPLIT(@menuid,',') 
+select @status=2
+return ;
+END
+END
+
+ELSE
+BEGIN
+select @status=2
+
+update Role
+set RoleName=@rolename,
+
+UpdatedDate=GETUTCDATE(),
+UpdateBy=@UserId
+where Id=@RoleId
+select @status=2
+END
+delete from RoleMenuPermissin where RoleId=@roleId
+insert into RoleMenuPermissin(Menu,RoleId,CreatedBy,CreatedDate,isActive)
+select TRY_CAST(value AS INT),@roleId,@UserId,GETDATE(),1
+FROM   STRING_SPLIT(@menuid,',') 
+END
+
+
+
+
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_saveUser]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2390,13 +2566,16 @@ CREATE proc [dbo].[sp_saveUser]
 @Email nvarchar(max),
 @Password nvarchar(max),
 @PassWordSalt nvarchar(max),
-
+@RoleId int ,
+@UserId int,
 @status INT OUTPUT
 
 )
 as 
 BEGIN
 Declare @profileId nvarchar(max)
+if(@UserId=0)
+BEGIN
 if exists(select top 1 * from TbL_User where UserName=@Email)
 BEGIN
 select @status=1
@@ -2405,13 +2584,28 @@ END
 ELSE
 BEGIN
  set @profileId= 'QT' + REPLACE(STR(isnull((select top 1 UserId from  TbL_User order by UserId desc ),1),5),' ', '0') 
-insert into TbL_User values(@FirstName,@FirstName,LOWER(@Email),@Password,@PassWordSalt,@PassWordSalt,1,1,getdate(),GETdATE(),@Phone)
+insert into TbL_User(FirstName,UserName,Password,Salt,EmailSalt,IsActive,Status,CreatedDate,UpdateDate,Phone,roleId,CreatedBy,UpdatedBy) 
+values(@FirstName,LOWER(@Email),@Password,@PassWordSalt,@PassWordSalt,1,1,getdate(),GETdATE(),@Phone,@RoleId,@UserId,@UserId)
 select @status=2
 return ;
 END
-
 END
 
+ELSE
+BEGIN
+select @status=2
+
+update TbL_User
+set Firstname=@FirstName,
+UserName=LOWER(@Email),
+Phone=@Phone,
+roleId=@RoleId,
+UpdateDate=GETUTCDATE(),
+UpdatedBy=@UserId
+where Userid=@UserId
+select @status=2
+END
+END
 
 
 
@@ -2420,7 +2614,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_testSeries]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  StoredProcedure [dbo].[sp_testSeries]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2448,7 +2642,7 @@ CREATE proc [dbo].[sp_testSeries]
 
  --select * from TestSeries
 GO
-/****** Object:  StoredProcedure [dbo].[sp_updatePassword]    Script Date: 19-08-2022 18:33:30 ******/
+/****** Object:  StoredProcedure [dbo].[sp_updatePassword]    Script Date: 21-08-2022 17:04:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

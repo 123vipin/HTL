@@ -1,19 +1,14 @@
-﻿using KaysthaMatrimoneySite.Core.Infrastructure;
-
-using System;
-using System.Linq;
-
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Data;
-using Microsoft.Extensions.Configuration;
-using KaysthaMatrimoneySite.Data.Models;
-using KaysthaMatrimoneySite.Data.ViewModels;
-using Web.Core.Users.Crytography;
-using System.Security.Cryptography;
-using OnlineQuiz.Data.ViewModels;
-using Newtonsoft.Json;
+﻿
 using HTL.Data.Models;
+using KaysthaMatrimoneySite.Data.ViewModels;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
+using OnlineQuiz.Data.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
 
 namespace KaysthaMatrimoneySite.Core.Services
 {
@@ -746,8 +741,9 @@ namespace KaysthaMatrimoneySite.Core.Services
 
         public RoleMainEditModel getRoleDataById(int roleId, int GetValue, int skipValue, int statusType)
         {
-            List<DropDownList> dbTradeList = new List<DropDownList>();
-            List<DropDownList> dcategoryList = new List<DropDownList>();
+            List<DropDownList> menulist = new List<DropDownList>();
+            List<DropDownList> roleSelected = new List<DropDownList>();
+            List<DropDownList> role = new List<DropDownList>();
             RoleMainEditModel product = new RoleMainEditModel();
             string connetionString = null;
             SqlConnection con;
@@ -766,7 +762,7 @@ namespace KaysthaMatrimoneySite.Core.Services
                 {
                     try
                     {
-                        dbTradeList.Add(new DropDownList
+                        menulist.Add(new DropDownList
 
                         {
                             Roleid = reader.GetInt32(reader.GetOrdinal("Roleid")),
@@ -788,7 +784,29 @@ namespace KaysthaMatrimoneySite.Core.Services
                     try
                     {
 
-                        dcategoryList.Add(new DropDownList
+                        roleSelected.Add(new DropDownList
+                        {
+                            Roleid = reader.GetInt32(reader.GetOrdinal("Roleid")),
+
+                            Value = reader.IsDBNull(reader.GetOrdinal("menu")) ? null : reader.GetString(reader.GetOrdinal("menu")),
+                            Key = reader.GetInt32(reader.GetOrdinal("id")),
+
+                        });
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+
+                reader.NextResult();
+                while (reader.Read())
+                {
+                    try
+                    {
+
+                        role.Add(new DropDownList
                         {
                             IsActive = reader.GetBoolean(reader.GetOrdinal("IsActive")),
 
@@ -807,8 +825,9 @@ namespace KaysthaMatrimoneySite.Core.Services
                 reader.Close();
                 con.Close();
             }
-            product.categoryList = dcategoryList;
-            product.dbTradeList = dbTradeList;
+            product.menuList = menulist;
+            product.roleSelected = roleSelected;
+            product.role = role;
             return product;
         }
 

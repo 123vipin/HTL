@@ -52,7 +52,7 @@ namespace KaysthaMatrimoneySite.API.Controllers
             return _quiz.GetUserList(Userid, GetValue, skipValue, statusType);
         }
 
-        [HttpGet("getRoleDataById/{UserId}/{GetValue}/{skipValue}/{statusType}")]
+        [HttpGet("getRoleDataById/{roleId}/{GetValue}/{skipValue}/{statusType}")]
         public RoleMainEditModel getRoleDataById(int roleId, int GetValue, int skipValue, int statusType)
         {
 

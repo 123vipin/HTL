@@ -16,6 +16,8 @@ namespace KaysthaMatrimoneySite.Core.Services
         UserModel ForgotSendMailPassword(UserModel model);
         int UpdatePassword(UserPassword model);
         int SaveSuggestion(UserModel model);
+        int saveRole(RoleModel model);
     }
 
 }
+

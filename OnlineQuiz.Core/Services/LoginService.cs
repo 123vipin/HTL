@@ -245,6 +245,42 @@ namespace KaysthaMatrimoneySite.Core.Services
                 return (int)(CreateUser.Failed);
             }
         }
+        public int saveRole(RoleModel model)
+        {
+           
+            SqlConnection con;
+            string connetionString = null;
+            connetionString = _config.GetConnectionString("DbConnectionString");
+            con = new SqlConnection(connetionString);
+            try
+            {
+                using (SqlCommand Cmd = new SqlCommand("[dbo].[sp_saveRole]", con))
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@rolename", model.RoleName);
+                    Cmd.Parameters.AddWithValue("@roleId", model.RoleId);
+               
+                    Cmd.Parameters.AddWithValue("@menuid", model.menuId);
+                    Cmd.Parameters.AddWithValue("@UserId", model.UserId);
+                    Cmd.Parameters.Add("@status", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    con.Open();
+                    SqlDataReader reader = Cmd.ExecuteReader();
+                    int contractID = Convert.ToInt32(Cmd.Parameters["@status"].Value);
 
+                    reader.Close();
+                    con.Close();
+                    if (contractID == 1)
+                    { return (int)(CreateUser.AlreadyExits); }
+                    else { return (int)(CreateUser.Success); }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return (int)(CreateUser.Failed);
+            }
+            return 0;
+
+        }
     }
 }
