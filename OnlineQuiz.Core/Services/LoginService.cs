@@ -282,5 +282,49 @@ namespace KaysthaMatrimoneySite.Core.Services
             return 0;
 
         }
+
+   
+            public List<DropDownList> getSideBarList(int userId)
+            {
+
+                List<DropDownList> dcategoryList = new List<DropDownList>();
+
+                string connetionString = null;
+                SqlConnection con;
+                connetionString = _config.GetConnectionString("DbConnectionString");
+                con = new SqlConnection(connetionString);
+                using (SqlCommand Cmd = new SqlCommand("[dbo].[sp_getsideBarMenu]", con))
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@UserId", userId);
+                    con.Open();
+                    SqlDataReader reader = Cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        try
+                        {
+                            dcategoryList.Add(new DropDownList
+                            {
+                                Value = reader.IsDBNull(reader.GetOrdinal("Menu")) ? null : reader.GetString(reader.GetOrdinal("Menu")),
+                                urlValue = reader.IsDBNull(reader.GetOrdinal("urlValue")) ? null : reader.GetString(reader.GetOrdinal("urlValue")),
+                                iclass = reader.IsDBNull(reader.GetOrdinal("iclass")) ? null : reader.GetString(reader.GetOrdinal("iclass")),
+                                Key = reader.GetInt32(reader.GetOrdinal("id")),
+                            });
+
+                        }
+                        catch (Exception ex)
+                        {
+                            throw ex;
+                        }
+                    }
+
+
+                    reader.Close();
+                    con.Close();
+                }
+
+                return dcategoryList;
+            }
+      
     }
 }

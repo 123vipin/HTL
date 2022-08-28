@@ -14,6 +14,7 @@ using KaysthaMatrimoneySite.Data.ViewModels;
 using KaysthaMatrimoneySite.Data.Models;
 using HTL.Data.Models;
 using OnlineQuiz.Data.ViewModels;
+using System.Collections.Generic;
 
 namespace KaysthaMatrimoneySite.API.Controllers
 {
@@ -59,7 +60,13 @@ namespace KaysthaMatrimoneySite.API.Controllers
             return _loginUser.Login(userlogin);
             ///return l;
         }
-
+        [HttpGet("getSideBarList/{userId}")]
+        public List<DropDownList> getSideBarList(int userId)
+        {
+            return _loginUser.getSideBarList(userId);
+            ///return l;
+        }
+        
 
         [HttpPost("ForgotSendMailPassword")]
         public ActionResult<int> ForgotSendMailPassword(UserModel userlogin)

@@ -17,6 +17,8 @@ namespace KaysthaMatrimoneySite.Core.Services
         int UpdatePassword(UserPassword model);
         int SaveSuggestion(UserModel model);
         int saveRole(RoleModel model);
+        List<DropDownList> getSideBarList(int userid);
+        
     }
 
 }
